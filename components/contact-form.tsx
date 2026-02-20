@@ -1,8 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 export default function ContactForm() {
+  const t = useTranslations('contact.form')
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,7 +35,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-            Full Name *
+            {t('fullName')}
           </label>
           <input
             type="text"
@@ -42,13 +45,13 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-            placeholder="John Doe"
+            placeholder={t('namePlaceholder')}
           />
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-            Email Address *
+            {t('emailLabel')}
           </label>
           <input
             type="email"
@@ -58,7 +61,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-            placeholder="john@example.com"
+            placeholder={t('emailPlaceholder')}
           />
         </div>
       </div>
@@ -66,7 +69,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-            Phone Number
+            {t('phoneLabel')}
           </label>
           <input
             type="tel"
@@ -75,13 +78,13 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-            placeholder="+250 123 456 789"
+            placeholder={t('phonePlaceholder')}
           />
         </div>
 
         <div>
           <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-            Subject *
+            {t('subjectLabel')}
           </label>
           <select
             id="subject"
@@ -91,19 +94,19 @@ export default function ContactForm() {
             required
             className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
           >
-            <option value="">Select a subject</option>
-            <option value="loan">Business Loan Inquiry</option>
-            <option value="savings">Savings Account</option>
-            <option value="investment">Investment Services</option>
-            <option value="training">Training Program</option>
-            <option value="other">Other</option>
+            <option value="">{t('subjectPlaceholder')}</option>
+            <option value="loan">{t('subjectLoan')}</option>
+            <option value="savings">{t('subjectSavings')}</option>
+            <option value="investment">{t('subjectInvestment')}</option>
+            <option value="training">{t('subjectTraining')}</option>
+            <option value="other">{t('subjectOther')}</option>
           </select>
         </div>
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-          Message *
+          {t('messageLabel')}
         </label>
         <textarea
           id="message"
@@ -113,7 +116,7 @@ export default function ContactForm() {
           required
           rows={5}
           className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-          placeholder="Tell us about your inquiry..."
+          placeholder={t('messagePlaceholder')}
         />
       </div>
 
@@ -122,19 +125,19 @@ export default function ContactForm() {
           type="submit"
           className="flex-1 px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
         >
-          Send Message
+          {t('send')}
         </button>
         <button
           type="reset"
           className="flex-1 px-8 py-3 rounded-lg border-2 border-border text-foreground hover:bg-muted/50 transition-colors font-semibold"
         >
-          Clear
+          {t('clear')}
         </button>
       </div>
 
       {submitted && (
         <div className="p-4 rounded-lg bg-accent/20 border border-accent/40 text-accent">
-          Thank you! Your message has been sent successfully. We'll be in touch soon.
+          {t('success')}
         </div>
       )}
     </form>
