@@ -57,7 +57,7 @@ export default function About() {
   ]
 
   const stats = [
-    { value: '500+', label: 'Active Members', highlight: true },
+    { value: '9,000+', label: 'Active Members', highlight: true },
     { value: '$2M+', label: 'Loans Disbursed', highlight: false },
     { value: '95%', label: 'Success Rate', highlight: true },
     { value: '1000+', label: 'Trained Entrepreneurs', highlight: false },
@@ -366,6 +366,78 @@ export default function About() {
                   {stat.value}
                 </p>
                 <p className="text-white/60 font-medium">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Board Members */}
+      <section className="py-28 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">Leadership</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mt-3 mb-5">
+              Board Members
+            </h2>
+            <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
+              Our dedicated board provides strategic leadership and governance for the cooperative
+            </p>
+          </div>
+
+          {/* President - featured */}
+          <div className="max-w-sm mx-auto mb-10">
+            {(() => {
+              const president = { name: 'Dr Munyaburanga Edward', role: 'President', initials: 'ME' }
+              return (
+                <div
+                  className="group relative rounded-3xl bg-white border border-border overflow-hidden hover:border-accent/40 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1.5"
+                  style={{ animation: 'fadeInUp 0.6s ease-out backwards' }}
+                >
+                  <div className="aspect-4/3 bg-linear-to-br from-primary via-primary/90 to-primary/75 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-[0.04]" style={{
+                      backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+                      backgroundSize: '20px 20px'
+                    }} />
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-accent/15 rounded-full blur-[60px]" />
+                    <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 flex items-center justify-center">
+                      <span className="text-3xl font-bold text-white">{president.initials}</span>
+                    </div>
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-bold text-primary mb-1">{president.name}</h3>
+                    <p className="text-accent font-semibold">{president.role}</p>
+                  </div>
+                </div>
+              )
+            })()}
+          </div>
+
+          {/* Other board members */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: 'Twahirwa Sylvestre', role: 'Vice President', initials: 'TS' },
+              { name: 'Tumuhayirwe Tarsire', role: 'Secretary', initials: 'TT' },
+              { name: 'Umwizerwa Redempta', role: 'Counselor', initials: 'UR' },
+              { name: 'Mugisha Desire', role: 'Counselor', initials: 'MD' },
+              { name: 'Ntakirutimana Viateur', role: 'Counselor', initials: 'NV' },
+              { name: 'Munyangoga Theophile', role: 'Counselor', initials: 'MT' },
+            ].map((member, idx) => (
+              <div
+                key={idx}
+                className="group relative rounded-3xl bg-white border border-border overflow-hidden hover:border-accent/40 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1.5"
+                style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.08}s backwards` }}
+              >
+                <div className="aspect-4/3 bg-linear-to-br from-primary/5 to-accent/5 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-700" />
+                  <div className="w-20 h-20 rounded-full bg-primary/8 border border-primary/10 flex items-center justify-center group-hover:bg-primary/12 transition-colors duration-300">
+                    <span className="text-2xl font-bold text-primary">{member.initials}</span>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-lg font-bold text-primary mb-1">{member.name}</h3>
+                  <p className="text-sm text-accent font-semibold">{member.role}</p>
+                </div>
               </div>
             ))}
           </div>

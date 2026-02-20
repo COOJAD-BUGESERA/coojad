@@ -61,7 +61,7 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-border/60 animate-fade-in-up" style={{ animationDelay: '0.35s' }}>
             {[
-              { icon: Users, value: '500+', label: 'Active Members', color: 'text-primary' },
+              { icon: Users, value: '9,000+', label: 'Active Members', color: 'text-primary' },
               { icon: TrendingUp, value: '$2M+', label: 'Loans Disbursed', color: 'text-accent' },
               { icon: Award, value: '95%', label: 'Success Rate', color: 'text-primary' },
             ].map((stat) => (
