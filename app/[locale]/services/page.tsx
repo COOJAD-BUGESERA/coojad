@@ -3,130 +3,51 @@
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { CheckCircle, ArrowRight, Briefcase, Wheat, Landmark, CreditCard } from 'lucide-react'
-import Link from 'next/link'
-
-interface Service {
-  title: string
-  description: string
-  icon: React.ElementType
-  features: string[]
-  eligibility: string[]
-  process: string[]
-  accent: string
-}
-
-const services: Service[] = [
-  {
-    title: 'Business Loans',
-    icon: Briefcase,
-    accent: 'from-primary/10 to-accent/5',
-    description: 'Commercial loans tailored for entrepreneurs and business owners looking to grow their ventures.',
-    features: [
-      'Loan amounts: 50,000 RWF - 20,000,000 RWF',
-      'Interest rate: 19% annually',
-      'Flexible repayment terms',
-      'Quick approval process (5-7 days)',
-      'Personal business mentoring included'
-    ],
-    eligibility: [
-      'Age: 21-60 years',
-      'Active business or detailed business plan',
-      'Stable income source',
-      'Valid ID and residence proof',
-      'Able to provide collateral'
-    ],
-    process: [
-      'Complete application form with business plan',
-      'Meet with loan officer for assessment',
-      'Provide financial documents and collateral details',
-      'Loan evaluation and decision',
-      'Fund disbursement upon approval'
-    ]
-  },
-  {
-    title: 'Agriculture & Livestock Loans',
-    icon: Wheat,
-    accent: 'from-accent/10 to-primary/5',
-    description: 'Specialized financing for farmers and livestock producers to boost agricultural productivity.',
-    features: [
-      'Loan amounts: 50,000 RWF - 20,000,000 RWF',
-      'Interest rate: 16% annually (lower rate for agricultural activities)',
-      'Seasonal repayment plans available',
-      'Agricultural extension support',
-      'Equipment financing options'
-    ],
-    eligibility: [
-      'Age: 21-60 years',
-      'Active farming or livestock business',
-      'Arable land or agricultural assets',
-      'Valid ID documentation',
-      'Agricultural experience'
-    ],
-    process: [
-      'Submit application with farm details',
-      'Site visit to assess agricultural assets',
-      'Provide land documents and agricultural plan',
-      'Loan approval based on harvest schedule',
-      'Seasonal fund disbursement and repayment'
-    ]
-  },
-  {
-    title: 'Savings Accounts',
-    icon: Landmark,
-    accent: 'from-primary/10 to-accent/5',
-    description: 'Multiple savings products to help you build wealth securely with attractive interest rates.',
-    features: [
-      'School Fees Account - Interest rate: 8-12% p.a.',
-      'Home Furniture Account - Dedicated savings product',
-      'Fixed Deposit Account - Competitive returns',
-      'Children\'s Savings Account - Start early wealth building',
-      'Minimum balance: 1,000 RWF to open'
-    ],
-    eligibility: [
-      'Age: 18+ years (children accounts for minors)',
-      'Rwandan citizen with valid ID',
-      'Stable income',
-      'Regular savings commitment'
-    ],
-    process: [
-      'Visit our office with valid ID',
-      'Choose your preferred savings product',
-      'Complete account opening form',
-      'Make initial deposit',
-      'Receive passbook and account details'
-    ]
-  },
-  {
-    title: 'Special Loan Products',
-    icon: CreditCard,
-    accent: 'from-accent/10 to-primary/5',
-    description: 'Specialized loans designed for specific needs - salary advances, education, transport, and mortgages.',
-    features: [
-      'Salary Advance Loan: 19% annually',
-      'School Fees Loan: 19% annually',
-      'Vehicle & Asset Loan: 19% annually',
-      'Mortgage Loans: 19% annually',
-      'Overdraft: 5% monthly',
-      'Quick processing for all products'
-    ],
-    eligibility: [
-      'Age: 21-60 years',
-      'Documented income source',
-      'Salaried employee, student, or asset owner',
-      'Valid ID and employment/ownership proof',
-      'Ability to provide required collateral'
-    ],
-    process: [
-      'Determine loan type based on your need',
-      'Prepare supporting documents',
-      'Submit application with requirements',
-      'Quick evaluation and decision',
-      'Rapid disbursement upon approval'
-    ]
-  }
-]
+import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 
 export default function Services() {
+  const t = useTranslations('services')
+
+  const services = [
+    {
+      title: t('businessLoans.title'),
+      icon: Briefcase,
+      accent: 'from-primary/10 to-accent/5',
+      description: t('businessLoans.description'),
+      features: [t('businessLoans.feature1'), t('businessLoans.feature2'), t('businessLoans.feature3'), t('businessLoans.feature4'), t('businessLoans.feature5')],
+      eligibility: [t('businessLoans.elig1'), t('businessLoans.elig2'), t('businessLoans.elig3'), t('businessLoans.elig4'), t('businessLoans.elig5')],
+      process: [t('businessLoans.step1'), t('businessLoans.step2'), t('businessLoans.step3'), t('businessLoans.step4'), t('businessLoans.step5')],
+    },
+    {
+      title: t('agriLoans.title'),
+      icon: Wheat,
+      accent: 'from-accent/10 to-primary/5',
+      description: t('agriLoans.description'),
+      features: [t('agriLoans.feature1'), t('agriLoans.feature2'), t('agriLoans.feature3'), t('agriLoans.feature4'), t('agriLoans.feature5')],
+      eligibility: [t('agriLoans.elig1'), t('agriLoans.elig2'), t('agriLoans.elig3'), t('agriLoans.elig4'), t('agriLoans.elig5')],
+      process: [t('agriLoans.step1'), t('agriLoans.step2'), t('agriLoans.step3'), t('agriLoans.step4'), t('agriLoans.step5')],
+    },
+    {
+      title: t('savings.title'),
+      icon: Landmark,
+      accent: 'from-primary/10 to-accent/5',
+      description: t('savings.description'),
+      features: [t('savings.feature1'), t('savings.feature2'), t('savings.feature3'), t('savings.feature4'), t('savings.feature5')],
+      eligibility: [t('savings.elig1'), t('savings.elig2'), t('savings.elig3'), t('savings.elig4')],
+      process: [t('savings.step1'), t('savings.step2'), t('savings.step3'), t('savings.step4'), t('savings.step5')],
+    },
+    {
+      title: t('specialLoans.title'),
+      icon: CreditCard,
+      accent: 'from-accent/10 to-primary/5',
+      description: t('specialLoans.description'),
+      features: [t('specialLoans.feature1'), t('specialLoans.feature2'), t('specialLoans.feature3'), t('specialLoans.feature4'), t('specialLoans.feature5'), t('specialLoans.feature6')],
+      eligibility: [t('specialLoans.elig1'), t('specialLoans.elig2'), t('specialLoans.elig3'), t('specialLoans.elig4'), t('specialLoans.elig5')],
+      process: [t('specialLoans.step1'), t('specialLoans.step2'), t('specialLoans.step3'), t('specialLoans.step4'), t('specialLoans.step5')],
+    },
+  ]
+
   return (
     <main className="min-h-screen bg-background">
       <Header />
@@ -148,23 +69,22 @@ export default function Services() {
               style={{ animation: 'fadeIn 0.6s ease-out' }}
             >
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-sm font-medium text-white/80">Financial Solutions for Everyone</span>
+              <span className="text-sm font-medium text-white/80">{t('hero.badge')}</span>
             </div>
 
             <h1
               className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1]"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.1s backwards' }}
             >
-              Our
-              <span className="text-accent"> Services</span>
+              {t('hero.titleLine1')}
+              <span className="text-accent"> {t('hero.titleLine2')}</span>
             </h1>
 
             <p
               className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.2s backwards' }}
             >
-              Comprehensive financial solutions designed to support your entrepreneurial journey
-              and help you achieve your business goals.
+              {t('hero.subtitle')}
             </p>
           </div>
         </div>
@@ -237,7 +157,7 @@ export default function Services() {
                     <div className="mb-8">
                       <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
                         <div className="w-1 h-5 bg-accent rounded-full" />
-                        Key Features
+                        {t('keyFeatures')}
                       </h3>
                       <ul className="space-y-3">
                         {service.features.map((feature, i) => (
@@ -256,7 +176,7 @@ export default function Services() {
                       href="/contact"
                       className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 font-semibold shadow-elegant group"
                     >
-                      Apply Now
+                      {t('applyNow')}
                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -267,7 +187,7 @@ export default function Services() {
                     <div className="rounded-2xl border border-border bg-white p-8 hover:shadow-elegant transition-all duration-300 group">
                       <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
                         <div className="w-1 h-5 bg-primary rounded-full" />
-                        Who Can Apply
+                        {t('whoCanApply')}
                       </h3>
                       <ul className="space-y-3.5">
                         {service.eligibility.map((item, i) => (
@@ -283,7 +203,7 @@ export default function Services() {
                     <div className="rounded-2xl border border-accent/20 bg-linear-to-br from-accent/5 to-transparent p-8 hover:shadow-elegant transition-all duration-300">
                       <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
                         <div className="w-1 h-5 bg-accent rounded-full" />
-                        How It Works
+                        {t('howItWorks')}
                       </h3>
                       <ol className="space-y-4">
                         {service.process.map((step, i) => (
@@ -315,26 +235,26 @@ export default function Services() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest">Take The Next Step</span>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('cta.badge')}</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
-              Ready to Get Started?
+              {t('cta.title')}
             </h2>
             <p className="text-lg text-white/65 leading-relaxed">
-              Contact us today to learn more about our services and how we can help you achieve your financial goals.
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-primary rounded-xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group"
               >
-                Get in Touch
+                {t('cta.getInTouch')}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white border border-white/15 rounded-xl font-semibold hover:bg-white/15 transition-all duration-200 backdrop-blur-sm"
               >
-                Learn About Us
+                {t('cta.learnAboutUs')}
               </Link>
             </div>
           </div>

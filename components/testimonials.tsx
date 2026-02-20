@@ -1,6 +1,7 @@
 'use client'
 
 import { Star, Quote } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 interface Testimonial {
   name: string
@@ -11,54 +12,56 @@ interface Testimonial {
   initial: string
 }
 
-const testimonials: Testimonial[] = [
-  {
-    name: 'Jean Claude',
-    role: 'Entrepreneur',
-    company: 'Tech Startup',
-    quote: 'COOJAD-BUGESERA transformed my business. The loan process was smooth and the support team was incredibly helpful. I went from an idea to a thriving business in 18 months.',
-    rating: 5,
-    initial: 'JC'
-  },
-  {
-    name: 'Amara Kawu',
-    role: 'Business Owner',
-    company: 'Fashion Brand',
-    quote: 'The business training programs were eye-opening. I learned not just about finances, but also about leadership and strategy. Highly recommended for any young entrepreneur.',
-    rating: 5,
-    initial: 'AK'
-  },
-  {
-    name: 'Peter Nkwasa',
-    role: 'Founder',
-    company: 'Agricultural Co-op',
-    quote: 'What impressed me most was the personalized approach. They understood my vision and provided tailored solutions. My business has grown 300% in two years.',
-    rating: 5,
-    initial: 'PN'
-  },
-  {
-    name: 'Grace Uwamahoro',
-    role: 'CEO',
-    company: 'Tech Hub',
-    quote: 'COOJAD is more than a bank\u2014it\'s a partner in growth. The investment advisory helped me scale efficiently while minimizing risks. Exceptional service!',
-    rating: 5,
-    initial: 'GU'
-  },
-]
-
 export default function Testimonials() {
+  const t = useTranslations('home.testimonials')
+
+  const testimonials: Testimonial[] = [
+    {
+      name: t('t1Name'),
+      role: t('t1Role'),
+      company: t('t1Company'),
+      quote: t('t1Quote'),
+      rating: 5,
+      initial: t('t1Initial')
+    },
+    {
+      name: t('t2Name'),
+      role: t('t2Role'),
+      company: t('t2Company'),
+      quote: t('t2Quote'),
+      rating: 5,
+      initial: t('t2Initial')
+    },
+    {
+      name: t('t3Name'),
+      role: t('t3Role'),
+      company: t('t3Company'),
+      quote: t('t3Quote'),
+      rating: 5,
+      initial: t('t3Initial')
+    },
+    {
+      name: t('t4Name'),
+      role: t('t4Role'),
+      company: t('t4Company'),
+      quote: t('t4Quote'),
+      rating: 5,
+      initial: t('t4Initial')
+    },
+  ]
+
   return (
     <section className="py-28 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-xs font-semibold text-accent uppercase tracking-widest">
-            Success Stories
+            {t('badge')}
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-primary mt-4 tracking-tight">
-            Member Testimonials
+            {t('title')}
           </h2>
           <p className="text-lg text-foreground/50 mt-5 max-w-2xl mx-auto leading-relaxed">
-            Discover how COOJAD-BUGESERA has transformed lives and businesses across Rwanda
+            {t('subtitle')}
           </p>
         </div>
 

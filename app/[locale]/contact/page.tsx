@@ -4,65 +4,26 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ContactForm from '@/components/contact-form'
 import { Mail, Phone, MapPin, Clock, ArrowRight, MessageSquare, ChevronDown } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 
 export default function Contact() {
+  const t = useTranslations('contact')
+
   const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Phone',
-      details: '0788 403 957',
-      subtitle: 'Mon-Fri, 8AM-5PM',
-      link: 'tel:0788403957',
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      details: 'info@coojad.rw',
-      subtitle: 'We reply within 24 hours',
-      link: 'mailto:info@coojad.rw',
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      details: 'Opposite Nyamata Bus Park',
-      subtitle: 'APEBU School Road, Nyamata',
-      link: '#',
-    },
-    {
-      icon: Clock,
-      title: 'Office Hours',
-      details: 'Mon - Fri: 8AM - 5PM',
-      subtitle: 'Sat: 9AM - 4PM',
-      link: '#',
-    }
+    { icon: Phone, title: t('info.phone'), details: t('info.phoneNumber'), subtitle: t('info.phoneHours'), link: 'tel:0788403957' },
+    { icon: Mail, title: t('info.email'), details: t('info.emailAddress'), subtitle: t('info.emailReply'), link: 'mailto:info@coojad.rw' },
+    { icon: MapPin, title: t('info.visitUs'), details: t('info.visitAddress'), subtitle: t('info.visitSubaddress'), link: '#' },
+    { icon: Clock, title: t('info.officeHours'), details: t('info.officeHoursDetail'), subtitle: t('info.officeHoursSat'), link: '#' },
   ]
 
   const faqs = [
-    {
-      q: 'What are the requirements to get a business loan?',
-      a: 'You must be 18-65 years old, a Rwandan citizen with valid ID, have an active business or business plan, stable income, and able to provide collateral.'
-    },
-    {
-      q: 'How long does the loan approval process take?',
-      a: 'Our typical approval process takes 5-7 business days from application submission. Some applications may be processed faster depending on documentation completeness.'
-    },
-    {
-      q: 'What are the interest rates for loans?',
-      a: 'Our interest rates range from 12% - 18% per annum, depending on loan amount, duration, and your credit profile. We offer competitive rates in the market.'
-    },
-    {
-      q: 'Do you offer training programs?',
-      a: 'Yes! We offer comprehensive training programs including entrepreneurship fundamentals, financial management, marketing, and leadership. Check our Services page for more details.'
-    },
-    {
-      q: 'Can I open a savings account with you?',
-      a: 'Absolutely! We offer flexible savings accounts with competitive interest rates (8%-12% p.a.), no hidden charges, and bonus rewards. Minimum opening balance is 50,000 RWF.'
-    },
-    {
-      q: 'How do I apply for services?',
-      a: 'You can start by contacting us using the form above or visiting our office. Our team will guide you through the application process.'
-    }
+    { q: t('faq.q1'), a: t('faq.a1') },
+    { q: t('faq.q2'), a: t('faq.a2') },
+    { q: t('faq.q3'), a: t('faq.a3') },
+    { q: t('faq.q4'), a: t('faq.a4') },
+    { q: t('faq.q5'), a: t('faq.a5') },
+    { q: t('faq.q6'), a: t('faq.a6') },
   ]
 
   return (
@@ -86,23 +47,22 @@ export default function Contact() {
               style={{ animation: 'fadeIn 0.6s ease-out' }}
             >
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-sm font-medium text-white/80">We&apos;d Love to Hear From You</span>
+              <span className="text-sm font-medium text-white/80">{t('hero.badge')}</span>
             </div>
 
             <h1
               className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1]"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.1s backwards' }}
             >
-              Get in
-              <span className="text-accent"> Touch</span>
+              {t('hero.titleLine1')}
+              <span className="text-accent"> {t('hero.titleLine2')}</span>
             </h1>
 
             <p
               className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.2s backwards' }}
             >
-              Have questions about our services? We&apos;re here to help you take the next step
-              toward your financial goals.
+              {t('hero.subtitle')}
             </p>
           </div>
         </div>
@@ -151,10 +111,10 @@ export default function Contact() {
             <div className="lg:col-span-3" style={{ animation: 'fadeInUp 0.6s ease-out' }}>
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-1 h-5 bg-accent rounded-full" />
-                <span className="text-xs font-bold text-accent uppercase tracking-widest">Send a Message</span>
+                <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('form.badge')}</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-8">
-                How Can We Help?
+                {t('form.title')}
               </h2>
               <div className="rounded-2xl border border-border bg-white p-8 sm:p-10">
                 <ContactForm />
@@ -179,8 +139,8 @@ export default function Contact() {
                 <div className="bg-primary p-5 flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-white font-semibold text-sm">COOJAD-BUGESERA</p>
-                    <p className="text-white/60 text-sm">Opposite Nyamata Bus Park, APEBU School Road, Nyamata</p>
+                    <p className="text-white font-semibold text-sm">{t('sidebar.mapTitle')}</p>
+                    <p className="text-white/60 text-sm">{t('sidebar.mapAddress')}</p>
                   </div>
                 </div>
               </div>
@@ -189,20 +149,20 @@ export default function Contact() {
               <div className="rounded-2xl border border-border bg-white p-8 hover:shadow-elegant transition-all duration-300">
                 <h3 className="text-lg font-bold text-primary mb-5 flex items-center gap-2">
                   <div className="w-1 h-5 bg-primary rounded-full" />
-                  Office Hours
+                  {t('sidebar.officeHours')}
                 </h3>
                 <div className="space-y-3.5">
                   <div className="flex justify-between items-center pb-3.5 border-b border-border">
-                    <span className="text-foreground/60 text-sm">Monday - Friday</span>
-                    <span className="font-semibold text-primary text-sm">8:00 AM - 5:00 PM</span>
+                    <span className="text-foreground/60 text-sm">{t('sidebar.monFri')}</span>
+                    <span className="font-semibold text-primary text-sm">{t('sidebar.monFriHours')}</span>
                   </div>
                   <div className="flex justify-between items-center pb-3.5 border-b border-border">
-                    <span className="text-foreground/60 text-sm">Saturday</span>
-                    <span className="font-semibold text-primary text-sm">9:00 AM - 4:00 PM</span>
+                    <span className="text-foreground/60 text-sm">{t('sidebar.saturday')}</span>
+                    <span className="font-semibold text-primary text-sm">{t('sidebar.saturdayHours')}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-foreground/60 text-sm">Sunday</span>
-                    <span className="font-semibold text-accent text-sm">Closed</span>
+                    <span className="text-foreground/60 text-sm">{t('sidebar.sunday')}</span>
+                    <span className="font-semibold text-accent text-sm">{t('sidebar.sundayClosed')}</span>
                   </div>
                 </div>
               </div>
@@ -211,28 +171,28 @@ export default function Contact() {
               <div className="rounded-2xl border border-accent/20 bg-linear-to-br from-accent/5 to-transparent p-8">
                 <h3 className="text-lg font-bold text-primary mb-5 flex items-center gap-2">
                   <div className="w-1 h-5 bg-accent rounded-full" />
-                  Quick Links
+                  {t('sidebar.quickLinks')}
                 </h3>
                 <div className="space-y-2.5">
                   <Link
                     href="/services"
                     className="flex items-center justify-between group py-2.5 text-foreground/65 hover:text-primary transition-colors"
                   >
-                    <span className="text-sm font-medium">View Our Services</span>
+                    <span className="text-sm font-medium">{t('sidebar.viewServices')}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/about"
                     className="flex items-center justify-between group py-2.5 text-foreground/65 hover:text-primary transition-colors"
                   >
-                    <span className="text-sm font-medium">Learn About Us</span>
+                    <span className="text-sm font-medium">{t('sidebar.learnAboutUs')}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="/"
                     className="flex items-center justify-between group py-2.5 text-foreground/65 hover:text-primary transition-colors"
                   >
-                    <span className="text-sm font-medium">Return to Home</span>
+                    <span className="text-sm font-medium">{t('sidebar.returnHome')}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -247,12 +207,12 @@ export default function Contact() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-14">
-              <span className="text-xs font-bold text-accent uppercase tracking-widest">FAQ</span>
+              <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('faq.badge')}</span>
               <h2 className="text-4xl sm:text-5xl font-bold text-primary mt-3 mb-4">
-                Common Questions
+                {t('faq.title')}
               </h2>
               <p className="text-foreground/60 text-lg">
-                Quick answers to questions you may have about our services
+                {t('faq.subtitle')}
               </p>
             </div>
 
@@ -287,11 +247,10 @@ export default function Contact() {
               <MessageSquare className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-primary">
-              Still Have Questions?
+              {t('bottomCta.title')}
             </h2>
             <p className="text-lg text-foreground/60 leading-relaxed">
-              Don&apos;t hesitate to reach out. Our team is always ready to assist you
-              with any inquiries about our financial products and services.
+              {t('bottomCta.subtitle')}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <a
@@ -299,14 +258,14 @@ export default function Contact() {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-xl font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-elegant"
               >
                 <Phone className="w-4 h-4" />
-                Call Us Now
+                {t('bottomCta.callUs')}
               </a>
               <a
                 href="mailto:info@coojad.rw"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary/5 text-primary rounded-xl font-semibold hover:bg-primary/10 transition-all duration-200"
               >
                 <Mail className="w-4 h-4" />
-                Send an Email
+                {t('bottomCta.sendEmail')}
               </a>
             </div>
           </div>

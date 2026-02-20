@@ -1,0 +1,411 @@
+{
+  "metadata": {
+    "title": "COOJAD-BUGESERA | Empowering Youth Entrepreneurs in Rwanda",
+    "description": "A dynamic cooperative bank dedicated to empowering youth entrepreneurs with financial services, business training, and community support in Kigali, Rwanda.",
+    "keywords": "cooperative bank, business loans, Rwanda, entrepreneurs, financial services, Kigali",
+    "ogDescription": "Empowering the next generation of entrepreneurs in Rwanda"
+  },
+  "common": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "contact": "Contact",
+      "joinNow": "Join Now"
+    },
+    "brand": {
+      "name": "COOJAD-BUGESERA",
+      "subtitle": "Cooperative de la Jeunesse",
+      "logoAlt": "COOJAD-BUGESERA Logo"
+    },
+    "footer": {
+      "description": "Empowering the next generation of entrepreneurs and promoting self-development in Rwanda.",
+      "quickLinks": "Quick Links",
+      "servicesTitle": "Services",
+      "contactTitle": "Contact",
+      "home": "Home",
+      "aboutUs": "About Us",
+      "services": "Services",
+      "contact": "Contact",
+      "businessLoans": "Business Loans",
+      "savingsPrograms": "Savings Programs",
+      "investmentServices": "Investment Services",
+      "businessTraining": "Business Training",
+      "phone": "0788 403 957",
+      "email": "info@coojad.rw",
+      "address": "Opposite Nyamata Bus Park, APEBU School Road, Nyamata",
+      "copyright": "© {year} COOJAD-BUGESERA. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Financial Excellence",
+      "titleLine1": "Empowering",
+      "titleLine2": "Entrepreneurs",
+      "subtitle": "Rwanda's premier cooperative bank dedicated to accessible financial services and business support for youth entrepreneurs.",
+      "exploreServices": "Explore Services",
+      "learnMore": "Learn More",
+      "stat1Value": "9,000+",
+      "stat1Label": "Active Members",
+      "stat2Value": "$2M+",
+      "stat2Label": "Loans Disbursed",
+      "stat3Value": "95%",
+      "stat3Label": "Success Rate"
+    },
+    "visionMission": {
+      "badge": "Who We Are",
+      "visionTitle": "Our Vision",
+      "visionText": "To become a micro-finance institution which enjoys operational self-sufficiency and offers a sufficient diversity of financial products adapted to the real needs of members and clients, with particular focus on young people.",
+      "mottoLabel": "Our Motto",
+      "motto": "Work · Progress · Mutual Solidarity · ICT",
+      "missionTitle": "Our Mission",
+      "missionText": "To contribute to the development of Bugesera District through the provision of financial services that facilitate the creation of jobs and the improvement of the socio-economic well-being of young people in particular and the population in general.",
+      "keyActionsLabel": "Key Actions",
+      "action1": "Promote mobilization and securing of deposits from economically active members",
+      "action2": "Facilitate access to credits and increase credit portfolio",
+      "action3": "Deliver financial education and promote financial inclusion"
+    },
+    "serviceCards": {
+      "badge": "Our Solutions",
+      "title": "Financial Services Built for You",
+      "subtitle": "Comprehensive solutions designed to support your entrepreneurial journey",
+      "learnMore": "Learn More",
+      "loans": {
+        "title": "Business Loans",
+        "description": "Competitive interest rates tailored for entrepreneurs with flexible repayment terms.",
+        "feature1": "Flexible repayment terms",
+        "feature2": "Low interest rates",
+        "feature3": "Quick approval process",
+        "feature4": "Personal mentoring"
+      },
+      "savings": {
+        "title": "Savings Programs",
+        "description": "Grow your wealth safely with competitive returns and full liquidity.",
+        "feature1": "Guaranteed returns",
+        "feature2": "No hidden charges",
+        "feature3": "Flexible withdrawal",
+        "feature4": "Bonus rewards"
+      },
+      "investment": {
+        "title": "Investment Services",
+        "description": "Smart investment opportunities with expert guidance for wealth creation.",
+        "feature1": "Expert guidance",
+        "feature2": "Diversified portfolio",
+        "feature3": "Risk management",
+        "feature4": "Regular updates"
+      },
+      "training": {
+        "title": "Business Training",
+        "description": "Develop skills to succeed in your entrepreneurial journey with industry experts.",
+        "feature1": "Expert trainers",
+        "feature2": "Practical workshops",
+        "feature3": "Networking events",
+        "feature4": "Certification"
+      }
+    },
+    "testimonials": {
+      "badge": "Success Stories",
+      "title": "Member Testimonials",
+      "subtitle": "Discover how COOJAD-BUGESERA has transformed lives and businesses across Rwanda",
+      "t1Name": "Jean Claude",
+      "t1Role": "Entrepreneur",
+      "t1Company": "Tech Startup",
+      "t1Quote": "COOJAD-BUGESERA transformed my business. The loan process was smooth and the support team was incredibly helpful. I went from an idea to a thriving business in 18 months.",
+      "t1Initial": "JC",
+      "t2Name": "Amara Kawu",
+      "t2Role": "Business Owner",
+      "t2Company": "Fashion Brand",
+      "t2Quote": "The business training programs were eye-opening. I learned not just about finances, but also about leadership and strategy. Highly recommended for any young entrepreneur.",
+      "t2Initial": "AK",
+      "t3Name": "Peter Nkwasa",
+      "t3Role": "Founder",
+      "t3Company": "Agricultural Co-op",
+      "t3Quote": "What impressed me most was the personalized approach. They understood my vision and provided tailored solutions. My business has grown 300% in two years.",
+      "t3Initial": "PN",
+      "t4Name": "Grace Uwamahoro",
+      "t4Role": "CEO",
+      "t4Company": "Tech Hub",
+      "t4Quote": "COOJAD is more than a bank—it's a partner in growth. The investment advisory helped me scale efficiently while minimizing risks. Exceptional service!",
+      "t4Initial": "GU"
+    },
+    "cta": {
+      "badge": "Get Started Today",
+      "titleLine1": "Ready to Grow",
+      "titleLine2": "Your Business?",
+      "subtitle": "Join hundreds of entrepreneurs transforming their dreams into reality with COOJAD-BUGESERA.",
+      "joinNow": "Join Now",
+      "learnMore": "Learn More",
+      "features": "No hidden fees · No long waiting periods · Transparent banking"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Est. 2008 · Nyamata, Rwanda",
+      "titleLine1": "Empowering Rwanda's",
+      "titleLine2": "Next Generation",
+      "subtitle": "A cooperative bank with a mission to uplift entrepreneurs through accessible financial services, mentorship, and dedicated community support.",
+      "location": "Opposite Nyamata Bus Park",
+      "license": "Licensed by National Bank of Rwanda"
+    },
+    "story": {
+      "badge": "Our History",
+      "titleLine1": "A Legacy of",
+      "titleLine2": "Trust",
+      "p1": "COOJAD-BUGESERA (Cooperative de la Jeunesse pour l'Auto-Emploi et Développement) was created with a government initiative to help residents, particularly youth, access financial services and improve their economic base.",
+      "p1Bold": "(Cooperative de la Jeunesse pour l'Auto-Emploi et Développement)",
+      "p2": "By August 2008, we became the sole remaining branch of the original ten COOJAD cooperatives, serving 9,000+ clients. We were recognized by Rwanda Cooperative Agency (RCA) on June 22, 2009, and received our Microfinance License (No. 337) from the National Bank of Rwanda.",
+      "p3": "Located opposite Nyamata Bus Park on APEBU School Road, we're committed to eradicating poverty and ensuring socio-economic development for youth entrepreneurs through financial inclusion and business training.",
+      "yearsValue": "17+",
+      "yearsLabel": "Years of Service",
+      "clientsValue": "9,000+",
+      "clientsLabel": "Clients Served",
+      "licensedTitle": "Licensed & Regulated",
+      "licensedDesc": "Microfinance License No. 337 from the National Bank of Rwanda, issued October 22, 2009",
+      "licensedBy": "Recognized by Rwanda Cooperative Agency"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To provide accessible, reliable financial services and entrepreneurship training that empowers youth and communities in Bugesera to achieve economic independence and sustainable growth."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "A thriving Rwandan community where every young entrepreneur has the financial tools, knowledge, and support network to build a successful, sustainable business."
+    },
+    "values": {
+      "badge": "Core Values",
+      "title": "What We Stand For",
+      "subtitle": "These principles guide everything we do and define who we are as an organization",
+      "rapidity": "Rapidity",
+      "rapidityDesc": "Quick and efficient service delivery to meet the needs of our members and clients.",
+      "honesty": "Honesty",
+      "honestyDesc": "We operate with transparency and integrity in all our business dealings and relationships.",
+      "serviceDelivery": "Good Service Delivery",
+      "serviceDeliveryDesc": "Excellence in every interaction, ensuring member satisfaction and financial success.",
+      "solidarity": "Mutual Solidarity",
+      "solidarityDesc": "We foster a community where members support each other's growth and prosperity."
+    },
+    "timeline": {
+      "badge": "Our Journey",
+      "title": "Milestones & Growth",
+      "y2008": "2008",
+      "y2008Title": "Last Remaining Branch",
+      "y2008Desc": "Became the sole remaining branch of the original ten COOJAD cooperatives, serving 9,000+ clients.",
+      "y2009": "2009",
+      "y2009Title": "Official Recognition",
+      "y2009Desc": "Recognized by Rwanda Cooperative Agency (RCA) on June 22, 2009, and received Microfinance License from National Bank of Rwanda.",
+      "y2015": "2015+",
+      "y2015Title": "Expansion & Growth",
+      "y2015Desc": "Expanded operations and financial products to better serve youth entrepreneurs and small business owners.",
+      "y2026": "2026",
+      "y2026Title": "Current Status",
+      "y2026Desc": "Serving 9,000+ members with diverse financial products and comprehensive business training programs."
+    },
+    "stats": {
+      "badge": "Our Impact",
+      "title": "Numbers That Matter",
+      "members": "Active Members",
+      "membersValue": "9,000+",
+      "loans": "Loans Disbursed",
+      "loansValue": "$2M+",
+      "success": "Success Rate",
+      "successValue": "95%",
+      "trained": "Trained Entrepreneurs",
+      "trainedValue": "1000+"
+    },
+    "board": {
+      "badge": "Leadership",
+      "title": "Board Members",
+      "subtitle": "Our dedicated board provides strategic leadership and governance for the cooperative",
+      "president": "President",
+      "vicePresident": "Vice President",
+      "secretary": "Secretary",
+      "counselor": "Counselor"
+    },
+    "cta": {
+      "title": "Ready to Join Our Community?",
+      "subtitle": "Whether you're looking to save, invest, or grow your business, COOJAD-BUGESERA is here to support your journey toward financial independence.",
+      "getInTouch": "Get in Touch",
+      "viewServices": "View Services"
+    }
+  },
+  "services": {
+    "hero": {
+      "badge": "Financial Solutions for Everyone",
+      "titleLine1": "Our",
+      "titleLine2": "Services",
+      "subtitle": "Comprehensive financial solutions designed to support your entrepreneurial journey and help you achieve your business goals."
+    },
+    "keyFeatures": "Key Features",
+    "whoCanApply": "Who Can Apply",
+    "howItWorks": "How It Works",
+    "applyNow": "Apply Now",
+    "businessLoans": {
+      "title": "Business Loans",
+      "description": "Commercial loans tailored for entrepreneurs and business owners looking to grow their ventures.",
+      "feature1": "Loan amounts: 50,000 RWF - 20,000,000 RWF",
+      "feature2": "Interest rate: 19% annually",
+      "feature3": "Flexible repayment terms",
+      "feature4": "Quick approval process (5-7 days)",
+      "feature5": "Personal business mentoring included",
+      "elig1": "Age: 21-60 years",
+      "elig2": "Active business or detailed business plan",
+      "elig3": "Stable income source",
+      "elig4": "Valid ID and residence proof",
+      "elig5": "Able to provide collateral",
+      "step1": "Complete application form with business plan",
+      "step2": "Meet with loan officer for assessment",
+      "step3": "Provide financial documents and collateral details",
+      "step4": "Loan evaluation and decision",
+      "step5": "Fund disbursement upon approval"
+    },
+    "agriLoans": {
+      "title": "Agriculture & Livestock Loans",
+      "description": "Specialized financing for farmers and livestock producers to boost agricultural productivity.",
+      "feature1": "Loan amounts: 50,000 RWF - 20,000,000 RWF",
+      "feature2": "Interest rate: 16% annually (lower rate for agricultural activities)",
+      "feature3": "Seasonal repayment plans available",
+      "feature4": "Agricultural extension support",
+      "feature5": "Equipment financing options",
+      "elig1": "Age: 21-60 years",
+      "elig2": "Active farming or livestock business",
+      "elig3": "Arable land or agricultural assets",
+      "elig4": "Valid ID documentation",
+      "elig5": "Agricultural experience",
+      "step1": "Submit application with farm details",
+      "step2": "Site visit to assess agricultural assets",
+      "step3": "Provide land documents and agricultural plan",
+      "step4": "Loan approval based on harvest schedule",
+      "step5": "Seasonal fund disbursement and repayment"
+    },
+    "savings": {
+      "title": "Savings Accounts",
+      "description": "Multiple savings products to help you build wealth securely with attractive interest rates.",
+      "feature1": "School Fees Account - Interest rate: 8-12% p.a.",
+      "feature2": "Home Furniture Account - Dedicated savings product",
+      "feature3": "Fixed Deposit Account - Competitive returns",
+      "feature4": "Children's Savings Account - Start early wealth building",
+      "feature5": "Minimum balance: 1,000 RWF to open",
+      "elig1": "Age: 18+ years (children accounts for minors)",
+      "elig2": "Rwandan citizen with valid ID",
+      "elig3": "Stable income",
+      "elig4": "Regular savings commitment",
+      "step1": "Visit our office with valid ID",
+      "step2": "Choose your preferred savings product",
+      "step3": "Complete account opening form",
+      "step4": "Make initial deposit",
+      "step5": "Receive passbook and account details"
+    },
+    "specialLoans": {
+      "title": "Special Loan Products",
+      "description": "Specialized loans designed for specific needs - salary advances, education, transport, and mortgages.",
+      "feature1": "Salary Advance Loan: 19% annually",
+      "feature2": "School Fees Loan: 19% annually",
+      "feature3": "Vehicle & Asset Loan: 19% annually",
+      "feature4": "Mortgage Loans: 19% annually",
+      "feature5": "Overdraft: 5% monthly",
+      "feature6": "Quick processing for all products",
+      "elig1": "Age: 21-60 years",
+      "elig2": "Documented income source",
+      "elig3": "Salaried employee, student, or asset owner",
+      "elig4": "Valid ID and employment/ownership proof",
+      "elig5": "Ability to provide required collateral",
+      "step1": "Determine loan type based on your need",
+      "step2": "Prepare supporting documents",
+      "step3": "Submit application with requirements",
+      "step4": "Quick evaluation and decision",
+      "step5": "Rapid disbursement upon approval"
+    },
+    "cta": {
+      "badge": "Take The Next Step",
+      "title": "Ready to Get Started?",
+      "subtitle": "Contact us today to learn more about our services and how we can help you achieve your financial goals.",
+      "getInTouch": "Get in Touch",
+      "learnAboutUs": "Learn About Us"
+    }
+  },
+  "contact": {
+    "hero": {
+      "badge": "We'd Love to Hear From You",
+      "titleLine1": "Get in",
+      "titleLine2": "Touch",
+      "subtitle": "Have questions about our services? We're here to help you take the next step toward your financial goals."
+    },
+    "info": {
+      "phone": "Phone",
+      "phoneNumber": "0788 403 957",
+      "phoneHours": "Mon-Fri, 8AM-5PM",
+      "email": "Email",
+      "emailAddress": "info@coojad.rw",
+      "emailReply": "We reply within 24 hours",
+      "visitUs": "Visit Us",
+      "visitAddress": "Opposite Nyamata Bus Park",
+      "visitSubaddress": "APEBU School Road, Nyamata",
+      "officeHours": "Office Hours",
+      "officeHoursDetail": "Mon - Fri: 8AM - 5PM",
+      "officeHoursSat": "Sat: 9AM - 4PM"
+    },
+    "form": {
+      "badge": "Send a Message",
+      "title": "How Can We Help?",
+      "fullName": "Full Name *",
+      "namePlaceholder": "John Doe",
+      "emailLabel": "Email Address *",
+      "emailPlaceholder": "john@example.com",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+250 123 456 789",
+      "subjectLabel": "Subject *",
+      "subjectPlaceholder": "Select a subject",
+      "subjectLoan": "Business Loan Inquiry",
+      "subjectSavings": "Savings Account",
+      "subjectInvestment": "Investment Services",
+      "subjectTraining": "Training Program",
+      "subjectOther": "Other",
+      "messageLabel": "Message *",
+      "messagePlaceholder": "Tell us about your inquiry...",
+      "send": "Send Message",
+      "clear": "Clear",
+      "success": "Thank you! Your message has been sent successfully. We'll be in touch soon."
+    },
+    "sidebar": {
+      "mapTitle": "COOJAD-BUGESERA",
+      "mapAddress": "Opposite Nyamata Bus Park, APEBU School Road, Nyamata",
+      "officeHours": "Office Hours",
+      "monFri": "Monday - Friday",
+      "monFriHours": "8:00 AM - 5:00 PM",
+      "saturday": "Saturday",
+      "saturdayHours": "9:00 AM - 4:00 PM",
+      "sunday": "Sunday",
+      "sundayClosed": "Closed",
+      "quickLinks": "Quick Links",
+      "viewServices": "View Our Services",
+      "learnAboutUs": "Learn About Us",
+      "returnHome": "Return to Home"
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Common Questions",
+      "subtitle": "Quick answers to questions you may have about our services",
+      "q1": "What are the requirements to get a business loan?",
+      "a1": "You must be 18-65 years old, a Rwandan citizen with valid ID, have an active business or business plan, stable income, and able to provide collateral.",
+      "q2": "How long does the loan approval process take?",
+      "a2": "Our typical approval process takes 5-7 business days from application submission. Some applications may be processed faster depending on documentation completeness.",
+      "q3": "What are the interest rates for loans?",
+      "a3": "Our interest rates range from 12% - 18% per annum, depending on loan amount, duration, and your credit profile. We offer competitive rates in the market.",
+      "q4": "Do you offer training programs?",
+      "a4": "Yes! We offer comprehensive training programs including entrepreneurship fundamentals, financial management, marketing, and leadership. Check our Services page for more details.",
+      "q5": "Can I open a savings account with you?",
+      "a5": "Absolutely! We offer flexible savings accounts with competitive interest rates (8%-12% p.a.), no hidden charges, and bonus rewards. Minimum opening balance is 50,000 RWF.",
+      "q6": "How do I apply for services?",
+      "a6": "You can start by contacting us using the form above or visiting our office. Our team will guide you through the application process."
+    },
+    "bottomCta": {
+      "title": "Still Have Questions?",
+      "subtitle": "Don't hesitate to reach out. Our team is always ready to assist you with any inquiries about our financial products and services.",
+      "callUs": "Call Us Now",
+      "sendEmail": "Send an Email"
+    }
+  }
+}

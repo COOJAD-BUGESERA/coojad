@@ -1,10 +1,12 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 export default function Footer() {
+  const t = useTranslations('common')
   const currentYear = new Date().getFullYear()
 
   return (
@@ -17,18 +19,18 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2.5 mb-5">
               <Image
                 src="/logo.jpeg"
-                alt="COOJAD-BUGESERA Logo"
+                alt={t('brand.logoAlt')}
                 width={38}
                 height={38}
                 className="rounded-full ring-1 ring-white/10"
               />
               <div>
-                <span className="font-bold text-base text-white block leading-tight tracking-tight">COOJAD-BUGESERA</span>
-                <span className="text-[11px] text-accent font-medium tracking-wide">Cooperative de la Jeunesse</span>
+                <span className="font-bold text-base text-white block leading-tight tracking-tight">{t('brand.name')}</span>
+                <span className="text-[11px] text-accent font-medium tracking-wide">{t('brand.subtitle')}</span>
               </div>
             </Link>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs">
-              Empowering the next generation of entrepreneurs and promoting self-development in Rwanda.
+              {t('footer.description')}
             </p>
             <div className="flex gap-3 mt-6">
               {[
@@ -49,13 +51,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">Quick Links</h3>
+            <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               {[
-                { href: '/', label: 'Home' },
-                { href: '/about', label: 'About Us' },
-                { href: '/services', label: 'Services' },
-                { href: '/contact', label: 'Contact' },
+                { href: '/', label: t('footer.home') },
+                { href: '/about', label: t('footer.aboutUs') },
+                { href: '/services', label: t('footer.services') },
+                { href: '/contact', label: t('footer.contact') },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -71,13 +73,13 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">Services</h3>
+            <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">{t('footer.servicesTitle')}</h3>
             <ul className="space-y-3">
               {[
-                'Business Loans',
-                'Savings Programs',
-                'Investment Services',
-                'Business Training',
+                t('footer.businessLoans'),
+                t('footer.savingsPrograms'),
+                t('footer.investmentServices'),
+                t('footer.businessTraining'),
               ].map((service) => (
                 <li key={service}>
                   <Link
@@ -93,7 +95,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">Contact</h3>
+            <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">{t('footer.contactTitle')}</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -101,7 +103,7 @@ export default function Footer() {
                   className="flex items-center gap-3 text-white/55 hover:text-accent transition-colors duration-300 text-sm"
                 >
                   <Phone size={14} className="shrink-0" />
-                  0788 403 957
+                  {t('footer.phone')}
                 </a>
               </li>
               <li>
@@ -110,12 +112,12 @@ export default function Footer() {
                   className="flex items-center gap-3 text-white/55 hover:text-accent transition-colors duration-300 text-sm"
                 >
                   <Mail size={14} className="shrink-0" />
-                  info@coojad.rw
+                  {t('footer.email')}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-white/55 text-sm">
                 <MapPin size={14} className="shrink-0 mt-0.5" />
-                <span>Opposite Nyamata Bus Park, APEBU School Road, Nyamata</span>
+                <span>{t('footer.address')}</span>
               </li>
             </ul>
           </div>
@@ -125,10 +127,10 @@ export default function Footer() {
         <div className="border-t border-white/[0.06] py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/30 text-sm">
-              &copy; {currentYear} COOJAD-BUGESERA. All rights reserved.
+              {t('footer.copyright', { year: currentYear })}
             </p>
             <div className="flex gap-6">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((label) => (
+              {[t('footer.privacyPolicy'), t('footer.termsOfService'), t('footer.cookiePolicy')].map((label) => (
                 <Link
                   key={label}
                   href="#"

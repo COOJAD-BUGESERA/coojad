@@ -1,6 +1,11 @@
+"use client"
+
 import { Eye, Target, Sparkles } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export default function VisionMission() {
+  const t = useTranslations('home.visionMission')
+
   return (
     <section className="relative py-28 bg-primary overflow-hidden">
       {/* Subtle decorative elements */}
@@ -12,7 +17,7 @@ export default function VisionMission() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 mb-6">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-xs font-semibold text-accent uppercase tracking-widest">Who We Are</span>
+            <span className="text-xs font-semibold text-accent uppercase tracking-widest">{t('badge')}</span>
           </div>
         </div>
 
@@ -23,16 +28,16 @@ export default function VisionMission() {
               <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Eye className="w-5 h-5 text-accent" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">Our Vision</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">{t('visionTitle')}</h2>
             </div>
             <p className="text-lg text-white/75 leading-relaxed">
-              To become a micro-finance institution which enjoys operational self-sufficiency and offers a sufficient diversity of financial products adapted to the real needs of members and clients, with particular focus on young people.
+              {t('visionText')}
             </p>
 
             <div className="mt-8 pt-8 border-t border-white/10">
-              <p className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-3">Our Motto</p>
+              <p className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-3">{t('mottoLabel')}</p>
               <p className="text-lg text-accent font-bold tracking-wide">
-                Work · Progress · Mutual Solidarity · ICT
+                {t('motto')}
               </p>
             </div>
           </div>
@@ -43,19 +48,19 @@ export default function VisionMission() {
               <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
                 <Target className="w-5 h-5 text-accent" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">Our Mission</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">{t('missionTitle')}</h2>
             </div>
             <p className="text-lg text-white/75 leading-relaxed">
-              To contribute to the development of Bugesera District through the provision of financial services that facilitate the creation of jobs and the improvement of the socio-economic well-being of young people in particular and the population in general.
+              {t('missionText')}
             </p>
 
             <div className="mt-8 pt-8 border-t border-white/10">
-              <p className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-4">Key Actions</p>
+              <p className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-4">{t('keyActionsLabel')}</p>
               <ul className="space-y-3">
                 {[
-                  'Promote mobilization and securing of deposits from economically active members',
-                  'Facilitate access to credits and increase credit portfolio',
-                  'Deliver financial education and promote financial inclusion',
+                  t('action1'),
+                  t('action2'),
+                  t('action3'),
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-white/75 text-sm">
                     <span className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">

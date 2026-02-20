@@ -1,9 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import { ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
+  const t = useTranslations('home.hero');
+
   return (
     <section className="relative pt-36 pb-24 sm:pt-40 sm:pb-32 overflow-hidden">
       {/* Background layers */}
@@ -27,19 +30,19 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-8 animate-fade-in">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-glow" />
             <span className="text-xs font-semibold text-accent uppercase tracking-widest">
-              Financial Excellence
+              {t('badge')}
             </span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary leading-[1.08] tracking-tight animate-fade-in-up">
-            Empowering
+            {t('titleLine1')}
             <span className="block mt-1">
-              Entrepreneurs
+              {t('titleLine2')}
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-foreground/60 leading-relaxed max-w-xl mt-8 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
-            Rwanda's premier cooperative bank dedicated to accessible financial services and business support for youth entrepreneurs.
+            {t('subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-10 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
@@ -47,23 +50,23 @@ export default function Hero() {
               href="/services"
               className="px-8 py-4 bg-primary text-white rounded-full font-semibold text-sm sm:text-base hover:shadow-xl hover:shadow-primary/15 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 inline-flex items-center justify-center gap-2.5 group"
             >
-              Explore Services
+              {t('exploreServices')}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <Link
               href="/about"
               className="px-8 py-4 border border-border text-foreground/80 rounded-full font-semibold text-sm sm:text-base hover:border-primary/30 hover:text-primary hover:bg-primary/[0.02] transition-all duration-300"
             >
-              Learn More
+              {t('learnMore')}
             </Link>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-border/60 animate-fade-in-up" style={{ animationDelay: '0.35s' }}>
             {[
-              { icon: Users, value: '9,000+', label: 'Active Members', color: 'text-primary' },
-              { icon: TrendingUp, value: '$2M+', label: 'Loans Disbursed', color: 'text-accent' },
-              { icon: Award, value: '95%', label: 'Success Rate', color: 'text-primary' },
+              { icon: Users, value: t('stat1Value'), label: t('stat1Label'), color: 'text-primary' },
+              { icon: TrendingUp, value: t('stat2Value'), label: t('stat2Label'), color: 'text-accent' },
+              { icon: Award, value: t('stat3Value'), label: t('stat3Label'), color: 'text-primary' },
             ].map((stat) => (
               <div key={stat.label} className="group">
                 <div className="flex items-center gap-2 mb-2">

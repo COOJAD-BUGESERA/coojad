@@ -3,64 +3,67 @@
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { Users, Award, Target, Lightbulb, ArrowRight, MapPin, Calendar, Shield } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 
 export default function About() {
+  const t = useTranslations('about')
+
   const values = [
     {
       icon: Target,
-      title: 'Rapidity',
-      description: 'Quick and efficient service delivery to meet the needs of our members and clients.',
+      title: t('values.rapidity'),
+      description: t('values.rapidityDesc'),
       gradient: 'from-primary/10 to-accent/5',
     },
     {
       icon: Award,
-      title: 'Honesty',
-      description: 'We operate with transparency and integrity in all our business dealings and relationships.',
+      title: t('values.honesty'),
+      description: t('values.honestyDesc'),
       gradient: 'from-accent/10 to-primary/5',
     },
     {
       icon: Users,
-      title: 'Good Service Delivery',
-      description: 'Excellence in every interaction, ensuring member satisfaction and financial success.',
+      title: t('values.serviceDelivery'),
+      description: t('values.serviceDeliveryDesc'),
       gradient: 'from-primary/10 to-accent/5',
     },
     {
       icon: Lightbulb,
-      title: 'Mutual Solidarity',
-      description: 'We foster a community where members support each other\'s growth and prosperity.',
+      title: t('values.solidarity'),
+      description: t('values.solidarityDesc'),
       gradient: 'from-accent/10 to-primary/5',
     }
   ]
 
   const timeline = [
     {
-      year: '2008',
-      title: 'Last Remaining Branch',
-      description: 'Became the sole remaining branch of the original ten COOJAD cooperatives, serving 9,000+ clients.',
+      year: t('timeline.y2008'),
+      title: t('timeline.y2008Title'),
+      description: t('timeline.y2008Desc'),
     },
     {
-      year: '2009',
-      title: 'Official Recognition',
-      description: 'Recognized by Rwanda Cooperative Agency (RCA) on June 22, 2009, and received Microfinance License from National Bank of Rwanda.',
+      year: t('timeline.y2009'),
+      title: t('timeline.y2009Title'),
+      description: t('timeline.y2009Desc'),
     },
     {
-      year: '2015+',
-      title: 'Expansion & Growth',
-      description: 'Expanded operations and financial products to better serve youth entrepreneurs and small business owners.',
+      year: t('timeline.y2015'),
+      title: t('timeline.y2015Title'),
+      description: t('timeline.y2015Desc'),
     },
     {
-      year: '2026',
-      title: 'Current Status',
-      description: 'Serving 9,000+ members with diverse financial products and comprehensive business training programs.',
+      year: t('timeline.y2026'),
+      title: t('timeline.y2026Title'),
+      description: t('timeline.y2026Desc'),
     }
   ]
 
   const stats = [
-    { value: '9,000+', label: 'Active Members', highlight: true },
-    { value: '$2M+', label: 'Loans Disbursed', highlight: false },
-    { value: '95%', label: 'Success Rate', highlight: true },
-    { value: '1000+', label: 'Trained Entrepreneurs', highlight: false },
+    { value: t('stats.membersValue'), label: t('stats.members'), highlight: true },
+    { value: t('stats.loansValue'), label: t('stats.loans'), highlight: false },
+    { value: t('stats.successValue'), label: t('stats.success'), highlight: true },
+    { value: t('stats.trainedValue'), label: t('stats.trained'), highlight: false },
   ]
 
   return (
@@ -85,23 +88,22 @@ export default function About() {
               style={{ animation: 'fadeIn 0.6s ease-out' }}
             >
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-sm font-medium text-white/80">Est. 2008 &middot; Nyamata, Rwanda</span>
+              <span className="text-sm font-medium text-white/80">{t('hero.badge')}</span>
             </div>
 
             <h1
               className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1]"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.1s backwards' }}
             >
-              Empowering Rwanda&apos;s
-              <span className="block text-accent mt-2">Next Generation</span>
+              {t('hero.titleLine1')}
+              <span className="block text-accent mt-2">{t('hero.titleLine2')}</span>
             </h1>
 
             <p
               className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.2s backwards' }}
             >
-              A cooperative bank with a mission to uplift entrepreneurs
-              through accessible financial services, mentorship, and dedicated community support.
+              {t('hero.subtitle')}
             </p>
 
             <div
@@ -110,12 +112,12 @@ export default function About() {
             >
               <div className="flex items-center gap-2 text-white/60 text-sm">
                 <MapPin className="w-4 h-4 text-accent" />
-                <span>Opposite Nyamata Bus Park</span>
+                <span>{t('hero.location')}</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-white/30 hidden sm:block" />
               <div className="flex items-center gap-2 text-white/60 text-sm">
                 <Shield className="w-4 h-4 text-accent" />
-                <span>Licensed by National Bank of Rwanda</span>
+                <span>{t('hero.license')}</span>
               </div>
             </div>
           </div>
@@ -135,21 +137,21 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <div className="space-y-8" style={{ animation: 'fadeInUp 0.6s ease-out' }}>
               <div>
-                <span className="text-xs font-bold text-accent uppercase tracking-widest">Our History</span>
+                <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('story.badge')}</span>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mt-3 leading-tight">
-                  A Legacy of
-                  <span className="text-accent"> Trust</span>
+                  {t('story.titleLine1')}
+                  <span className="text-accent"> {t('story.titleLine2')}</span>
                 </h2>
               </div>
               <div className="space-y-5">
                 <p className="text-lg text-foreground/65 leading-relaxed">
-                  COOJAD-BUGESERA <span className="text-foreground/80 font-medium">(Cooperative de la Jeunesse pour l&apos;Auto-Emploi et D&eacute;veloppement)</span> was created with a government initiative to help residents, particularly youth, access financial services and improve their economic base.
+                  {t('story.p1')}
                 </p>
                 <p className="text-lg text-foreground/65 leading-relaxed">
-                  By August 2008, we became the sole remaining branch of the original ten COOJAD cooperatives, serving 9,000+ clients. We were recognized by Rwanda Cooperative Agency (RCA) on June 22, 2009, and received our Microfinance License (No. 337) from the National Bank of Rwanda.
+                  {t('story.p2')}
                 </p>
                 <p className="text-lg text-foreground/65 leading-relaxed">
-                  Located opposite Nyamata Bus Park on APEBU School Road, we&apos;re committed to eradicating poverty and ensuring socio-economic development for youth entrepreneurs through financial inclusion and business training.
+                  {t('story.p3')}
                 </p>
               </div>
               <div className="flex items-center gap-6 pt-2">
@@ -158,8 +160,8 @@ export default function About() {
                     <Calendar className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-primary">17+</p>
-                    <p className="text-sm text-foreground/50">Years of Service</p>
+                    <p className="text-2xl font-bold text-primary">{t('story.yearsValue')}</p>
+                    <p className="text-sm text-foreground/50">{t('story.yearsLabel')}</p>
                   </div>
                 </div>
                 <div className="w-px h-12 bg-border" />
@@ -168,8 +170,8 @@ export default function About() {
                     <Users className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-primary">9,000+</p>
-                    <p className="text-sm text-foreground/50">Clients Served</p>
+                    <p className="text-2xl font-bold text-primary">{t('story.clientsValue')}</p>
+                    <p className="text-sm text-foreground/50">{t('story.clientsLabel')}</p>
                   </div>
                 </div>
               </div>
@@ -188,12 +190,12 @@ export default function About() {
                   <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-8 border border-white/10">
                     <Shield className="w-10 h-10 text-accent" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Licensed & Regulated</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3">{t('story.licensedTitle')}</h3>
                   <p className="text-white/60 leading-relaxed max-w-xs">
-                    Microfinance License No. 337 from the National Bank of Rwanda, issued October 22, 2009
+                    {t('story.licensedDesc')}
                   </p>
                   <div className="elegant-divider mt-8 mb-6 mx-auto" />
-                  <p className="text-sm text-white/40">Recognized by Rwanda Cooperative Agency</p>
+                  <p className="text-sm text-white/40">{t('story.licensedBy')}</p>
                 </div>
               </div>
 
@@ -218,9 +220,9 @@ export default function About() {
                 <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/10">
                   <Target className="w-7 h-7 text-accent" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">{t('mission.title')}</h3>
                 <p className="text-white/70 leading-relaxed text-lg">
-                  To provide accessible, reliable financial services and entrepreneurship training that empowers youth and communities in Bugesera to achieve economic independence and sustainable growth.
+                  {t('mission.text')}
                 </p>
               </div>
             </div>
@@ -234,9 +236,9 @@ export default function About() {
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                   <Lightbulb className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
+                <h3 className="text-2xl font-bold text-primary mb-4">{t('vision.title')}</h3>
                 <p className="text-foreground/65 leading-relaxed text-lg">
-                  A thriving Rwandan community where every young entrepreneur has the financial tools, knowledge, and support network to build a successful, sustainable business.
+                  {t('vision.text')}
                 </p>
               </div>
             </div>
@@ -248,12 +250,12 @@ export default function About() {
       <section className="py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest">Core Values</span>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('values.badge')}</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mt-3 mb-5">
-              What We Stand For
+              {t('values.title')}
             </h2>
             <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-              These principles guide everything we do and define who we are as an organization
+              {t('values.subtitle')}
             </p>
           </div>
 
@@ -291,9 +293,9 @@ export default function About() {
       <section className="py-28 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest">Our Journey</span>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('timeline.badge')}</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mt-3">
-              Milestones & Growth
+              {t('timeline.title')}
             </h2>
           </div>
 
@@ -349,9 +351,9 @@ export default function About() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest">Our Impact</span>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('stats.badge')}</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-3">
-              Numbers That Matter
+              {t('stats.title')}
             </h2>
           </div>
 
@@ -376,19 +378,19 @@ export default function About() {
       <section className="py-28 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest">Leadership</span>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('board.badge')}</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mt-3 mb-5">
-              Board Members
+              {t('board.title')}
             </h2>
             <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-              Our dedicated board provides strategic leadership and governance for the cooperative
+              {t('board.subtitle')}
             </p>
           </div>
 
           {/* President - featured */}
           <div className="max-w-sm mx-auto mb-10">
             {(() => {
-              const president = { name: 'Dr Munyaburanga Edward', role: 'President', initials: 'ME' }
+              const president = { name: 'Dr Munyaburanga Edward', role: t('board.president'), initials: 'ME' }
               return (
                 <div
                   className="group relative rounded-3xl bg-white border border-border overflow-hidden hover:border-accent/40 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1.5"
@@ -416,12 +418,12 @@ export default function About() {
           {/* Other board members */}
           <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: 'Twahirwa Sylvestre', role: 'Vice President', initials: 'TS' },
-              { name: 'Tumuhayirwe Tarsire', role: 'Secretary', initials: 'TT' },
-              { name: 'Umwizerwa Redempta', role: 'Counselor', initials: 'UR' },
-              { name: 'Mugisha Desire', role: 'Counselor', initials: 'MD' },
-              { name: 'Ntakirutimana Viateur', role: 'Counselor', initials: 'NV' },
-              { name: 'Munyangoga Theophile', role: 'Counselor', initials: 'MT' },
+              { name: 'Twahirwa Sylvestre', role: t('board.vicePresident'), initials: 'TS' },
+              { name: 'Tumuhayirwe Tarsire', role: t('board.secretary'), initials: 'TT' },
+              { name: 'Umwizerwa Redempta', role: t('board.counselor'), initials: 'UR' },
+              { name: 'Mugisha Desire', role: t('board.counselor'), initials: 'MD' },
+              { name: 'Ntakirutimana Viateur', role: t('board.counselor'), initials: 'NV' },
+              { name: 'Munyangoga Theophile', role: t('board.counselor'), initials: 'MT' },
             ].map((member, idx) => (
               <div
                 key={idx}
@@ -449,25 +451,24 @@ export default function About() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-8" style={{ animation: 'fadeInUp 0.6s ease-out' }}>
             <h2 className="text-4xl sm:text-5xl font-bold text-primary">
-              Ready to Join Our Community?
+              {t('cta.title')}
             </h2>
             <p className="text-lg text-foreground/60 leading-relaxed">
-              Whether you&apos;re looking to save, invest, or grow your business, COOJAD-BUGESERA
-              is here to support your journey toward financial independence.
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-xl font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-elegant"
               >
-                Get in Touch
+                {t('cta.getInTouch')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/services"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary/5 text-primary rounded-xl font-semibold hover:bg-primary/10 transition-all duration-200"
               >
-                View Services
+                {t('cta.viewServices')}
               </Link>
             </div>
           </div>
