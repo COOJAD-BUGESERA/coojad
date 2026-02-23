@@ -446,6 +446,45 @@ export default function About() {
         </div>
       </section>
 
+      {/* Supervisory Committee */}
+      <section className="py-28 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold text-accent uppercase tracking-widest">{t('supervisory.badge')}</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mt-3 mb-5">
+              {t('supervisory.title')}
+            </h2>
+            <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
+              {t('supervisory.subtitle')}
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              { name: 'UGIRUWE Valentine', role: t('supervisory.member'), initials: 'UV' },
+              { name: 'RWAGASANA Jean de Dieu', role: t('supervisory.member'), initials: 'RJ' },
+            ].map((member, idx) => (
+              <div
+                key={idx}
+                className="group relative rounded-3xl bg-white border border-border overflow-hidden hover:border-accent/40 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1.5"
+                style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.08}s backwards` }}
+              >
+                <div className="aspect-4/3 bg-linear-to-br from-primary/5 to-accent/5 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-700" />
+                  <div className="w-20 h-20 rounded-full bg-primary/8 border border-primary/10 flex items-center justify-center group-hover:bg-primary/12 transition-colors duration-300">
+                    <span className="text-2xl font-bold text-primary">{member.initials}</span>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-lg font-bold text-primary mb-1">{member.name}</h3>
+                  <p className="text-sm text-accent font-semibold">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

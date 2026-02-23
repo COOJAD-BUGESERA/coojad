@@ -224,6 +224,12 @@
       "secretary": "Secrétaire",
       "counselor": "Conseiller"
     },
+    "supervisory": {
+      "badge": "Surveillance",
+      "title": "Comité de Surveillance",
+      "subtitle": "Notre comité de surveillance assure la transparence, la responsabilité et la conformité au sein de la coopérative",
+      "member": "Membre du Comité de Surveillance"
+    },
     "cta": {
       "title": "Prêt à Rejoindre Notre Communauté?",
       "subtitle": "Que vous cherchiez à épargner, investir ou développer votre entreprise, COOJAD-BUGESERA est là pour soutenir votre parcours vers l'indépendance financière.",
