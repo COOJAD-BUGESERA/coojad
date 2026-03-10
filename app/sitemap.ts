@@ -1,8 +1,6 @@
 import { MetadataRoute } from 'next'
+import { siteConfig, getFullUrl } from '@/lib/seo-config'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw'
-
-const locales = ['en', 'fr', 'rw']
 const pages = ['', '/about', '/services', '/contact']
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,13 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generate entries for each page in each locale
   pages.forEach((page) => {
-    locales.forEach((locale) => {
-      const url = `${baseUrl}/${locale}${page}`
+    siteConfig.locales.forEach((locale) => {
+      const url = getFullUrl(`/${locale}${page}`)
       const alternateLanguages: Record<string, string> = {}
       
       // Add hreflang alternates for each locale
-      locales.forEach((altLocale) => {
-        alternateLanguages[altLocale] = `${baseUrl}/${altLocale}${page}`
+      siteConfig.locales.forEach((altLocale) => {
+        alternateLanguages[altLocale] = getFullUrl(`/${altLocale}${page}`)
       })
       
       sitemapEntries.push({
