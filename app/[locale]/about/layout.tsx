@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { siteConfig, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 
 type Locale = (typeof routing.locales)[number]
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -17,64 +16,64 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = `${baseUrl}/${loc}/about`
+    alternateLanguages[loc] = getFullUrl(`/${loc}/about`)
   })
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${baseUrl}/${localeValue}/about`,
+      canonical: getFullUrl(`/${localeValue}/about`),
       languages: alternateLanguages,
     },
     openGraph: {
-      title: `${title} | COOJAD-BUGESERA`,
+      title: `${title} | ${siteConfig.name}`,
       description,
       type: 'website',
-      url: `${baseUrl}/${localeValue}/about`,
-      siteName: 'COOJAD-BUGESERA',
-      locale: localeValue === 'fr' ? 'fr_RW' : localeValue === 'rw' ? 'rw_RW' : 'en_RW',
+      url: getFullUrl(`/${localeValue}/about`),
+      siteName: siteConfig.name,
+      locale: getOgLocale(localeValue),
       images: [
         {
-          url: `${baseUrl}/coojad-logo.jpeg`,
+          url: getLogoUrl(),
           width: 1200,
           height: 630,
-          alt: 'About COOJAD-BUGESERA',
+          alt: `About ${siteConfig.name}`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | COOJAD-BUGESERA`,
+      title: `${title} | ${siteConfig.name}`,
       description,
-      images: [`${baseUrl}/coojad-logo.jpeg`],
+      images: [getLogoUrl()],
     },
     other: {
-      'geo.region': 'RW-05',
-      'geo.placename': 'Nyamata, Bugesera District, Rwanda',
-      'geo.position': '-2.1445609;30.092361',
-      'ICBM': '-2.1445609, 30.092361',
+      'geo.region': siteConfig.location.geoRegion,
+      'geo.placename': `${siteConfig.location.addressLocality}, ${siteConfig.location.addressRegion}, ${siteConfig.location.countryName}`,
+      'geo.position': `${siteConfig.location.geoCoordinates.latitude};${siteConfig.location.geoCoordinates.longitude}`,
+      'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
     },
   }
 }
 
-// Structured data for about page - Organization schema
+// Structured data for about page - Organization schema using shared config
 const aboutJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   mainEntity: {
     '@type': 'Organization',
-    '@id': `${baseUrl}/#organization`,
-    name: 'COOJAD-BUGESERA',
-    legalName: 'Cooperative de la Jeunesse pour l\'Auto-Emploi et Développement - BUGESERA',
-    alternateName: ['COOJAD', 'COOJAD-BUGESERA'],
-    description: 'A cooperative bank dedicated to empowering youth entrepreneurs with financial services, business training, and community support in Rwanda since 2008.',
-    foundingDate: '2008-08-01',
-    url: baseUrl,
-    logo: `${baseUrl}/coojad-logo.jpeg`,
-    image: `${baseUrl}/coojad-logo.jpeg`,
-    telephone: '+250788403957',
-    email: 'info@coojad.rw',
+    '@id': `${siteConfig.url}/#organization`,
+    name: siteConfig.name,
+    legalName: siteConfig.legalName,
+    alternateName: [siteConfig.shortName, siteConfig.name],
+    description: `${siteConfig.description} since ${new Date(siteConfig.foundingDate).getFullYear()}.`,
+    foundingDate: siteConfig.foundingDate,
+    url: siteConfig.url,
+    logo: getLogoUrl(),
+    image: getLogoUrl(),
+    telephone: siteConfig.contact.telephone,
+    email: siteConfig.contact.email,
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 10,
@@ -82,15 +81,15 @@ const aboutJsonLd = {
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Opposite Nyamata Bus Park, APEBU School Road',
-      addressLocality: 'Nyamata',
-      addressRegion: 'Bugesera District',
-      addressCountry: 'RW',
+      streetAddress: siteConfig.location.streetAddress,
+      addressLocality: siteConfig.location.addressLocality,
+      addressRegion: siteConfig.location.addressRegion,
+      addressCountry: siteConfig.location.addressCountry,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -2.1445609,
-      longitude: 30.092361,
+      latitude: siteConfig.location.geoCoordinates.latitude,
+      longitude: siteConfig.location.geoCoordinates.longitude,
     },
     knowsAbout: [
       'Microfinance',

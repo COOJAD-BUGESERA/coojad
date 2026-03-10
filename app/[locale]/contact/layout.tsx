@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 
 type Locale = (typeof routing.locales)[number]
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -17,106 +16,106 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = `${baseUrl}/${loc}/contact`
+    alternateLanguages[loc] = getFullUrl(`/${loc}/contact`)
   })
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${baseUrl}/${localeValue}/contact`,
+      canonical: getFullUrl(`/${localeValue}/contact`),
       languages: alternateLanguages,
     },
     openGraph: {
-      title: `${title} | COOJAD-BUGESERA`,
+      title: `${title} | ${siteConfig.name}`,
       description,
       type: 'website',
-      url: `${baseUrl}/${localeValue}/contact`,
-      siteName: 'COOJAD-BUGESERA',
-      locale: localeValue === 'fr' ? 'fr_RW' : localeValue === 'rw' ? 'rw_RW' : 'en_RW',
+      url: getFullUrl(`/${localeValue}/contact`),
+      siteName: siteConfig.name,
+      locale: getOgLocale(localeValue),
       images: [
         {
-          url: `${baseUrl}/coojad-logo.jpeg`,
+          url: getLogoUrl(),
           width: 1200,
           height: 630,
-          alt: 'Contact COOJAD-BUGESERA',
+          alt: `Contact ${siteConfig.name}`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | COOJAD-BUGESERA`,
+      title: `${title} | ${siteConfig.name}`,
       description,
-      images: [`${baseUrl}/coojad-logo.jpeg`],
+      images: [getLogoUrl()],
     },
     other: {
-      'geo.region': 'RW-05',
-      'geo.placename': 'Nyamata, Bugesera District, Rwanda',
-      'geo.position': '-2.1445609;30.092361',
-      'ICBM': '-2.1445609, 30.092361',
+      'geo.region': siteConfig.location.geoRegion,
+      'geo.placename': `${siteConfig.location.addressLocality}, ${siteConfig.location.addressRegion}, ${siteConfig.location.countryName}`,
+      'geo.position': `${siteConfig.location.geoCoordinates.latitude};${siteConfig.location.geoCoordinates.longitude}`,
+      'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
     },
   }
 }
 
-// Structured data for contact page with enhanced GEO information
+// Structured data for contact page with enhanced GEO information using shared config
 const contactJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   mainEntity: {
     '@type': 'LocalBusiness',
-    '@id': `${baseUrl}/#contact`,
-    name: 'COOJAD-BUGESERA',
-    description: 'Contact COOJAD-BUGESERA cooperative bank for business loans, savings accounts, and financial services in Nyamata, Rwanda.',
-    url: `${baseUrl}/contact`,
-    telephone: '+250788403957',
-    email: 'info@coojad.rw',
+    '@id': `${siteConfig.url}/#contact`,
+    name: siteConfig.name,
+    description: `Contact ${siteConfig.name} cooperative bank for business loans, savings accounts, and financial services in ${siteConfig.location.addressLocality}, ${siteConfig.location.countryName}.`,
+    url: getFullUrl('/contact'),
+    telephone: siteConfig.contact.telephone,
+    email: siteConfig.contact.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Opposite Nyamata Bus Park, APEBU School Road',
-      addressLocality: 'Nyamata',
-      addressRegion: 'Bugesera District',
-      addressCountry: 'RW',
+      streetAddress: siteConfig.location.streetAddress,
+      addressLocality: siteConfig.location.addressLocality,
+      addressRegion: siteConfig.location.addressRegion,
+      addressCountry: siteConfig.location.addressCountry,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -2.1445609,
-      longitude: 30.092361,
+      latitude: siteConfig.location.geoCoordinates.latitude,
+      longitude: siteConfig.location.geoCoordinates.longitude,
     },
-    hasMap: 'https://www.google.com/maps?q=-2.1445609,30.092361',
+    hasMap: `https://www.google.com/maps?q=${siteConfig.location.geoCoordinates.latitude},${siteConfig.location.geoCoordinates.longitude}`,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '17:00',
+        opens: siteConfig.openingHours.weekdays.opens,
+        closes: siteConfig.openingHours.weekdays.closes,
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '16:00',
+        opens: siteConfig.openingHours.saturday.opens,
+        closes: siteConfig.openingHours.saturday.closes,
       },
     ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+250788403957',
+        telephone: siteConfig.contact.telephone,
         contactType: 'customer service',
         availableLanguage: ['English', 'French', 'Kinyarwanda'],
-        areaServed: 'RW',
+        areaServed: siteConfig.location.addressCountry,
       },
       {
         '@type': 'ContactPoint',
-        email: 'info@coojad.rw',
+        email: siteConfig.contact.email,
         contactType: 'customer service',
         availableLanguage: ['English', 'French', 'Kinyarwanda'],
-        areaServed: 'RW',
+        areaServed: siteConfig.location.addressCountry,
       },
     ],
   },
 }
 
-// FAQ structured data
+// FAQ structured data using shared config for accurate rates
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -142,7 +141,7 @@ const faqJsonLd = {
       name: 'What are the interest rates for loans?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Our interest rates range from 12% - 18% per annum, depending on loan amount, duration, and your credit profile. We offer competitive rates in the market.',
+        text: `Our interest rates are ${financialProducts.businessLoans.interestRate}% per annum for business loans, salary advances, and special loans. Agriculture and livestock loans have a reduced rate of ${financialProducts.agricultureLoans.interestRate}% per annum. Savings accounts earn ${financialProducts.savingsAccounts.interestRateMin}%-${financialProducts.savingsAccounts.interestRateMax}% p.a.`,
       },
     },
     {
@@ -158,7 +157,7 @@ const faqJsonLd = {
       name: 'Can I open a savings account with you?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Absolutely! We offer flexible savings accounts with competitive interest rates (8%-12% p.a.), no hidden charges, and bonus rewards. Minimum opening balance is 50,000 RWF.',
+        text: `Absolutely! We offer flexible savings accounts with competitive interest rates (${financialProducts.savingsAccounts.interestRateMin}%-${financialProducts.savingsAccounts.interestRateMax}% p.a.), no hidden charges, and bonus rewards. Minimum opening balance is ${financialProducts.savingsAccounts.minOpeningBalance.toLocaleString()} RWF.`,
       },
     },
   ],

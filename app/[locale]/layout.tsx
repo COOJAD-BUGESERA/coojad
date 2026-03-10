@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
+import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 import '../globals.css'
 
 type Locale = (typeof routing.locales)[number]
@@ -12,72 +13,69 @@ type Locale = (typeof routing.locales)[number]
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
-// Base URL for the site
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw'
-
-// Structured data for LocalBusiness (GEO targeting)
+// Structured data for LocalBusiness (GEO targeting) using shared config
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
-  '@id': `${baseUrl}/#organization`,
-  name: 'COOJAD-BUGESERA',
-  alternateName: 'Cooperative de la Jeunesse pour l\'Auto-Emploi et Développement',
-  description: 'A cooperative bank dedicated to empowering youth entrepreneurs with financial services, business training, and community support in Rwanda.',
-  url: baseUrl,
-  logo: `${baseUrl}/coojad-logo.jpeg`,
-  image: `${baseUrl}/coojad-logo.jpeg`,
-  telephone: '+250788403957',
-  email: 'info@coojad.rw',
-  foundingDate: '2008',
+  '@id': `${siteConfig.url}/#organization`,
+  name: siteConfig.name,
+  alternateName: siteConfig.alternateName,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  logo: getLogoUrl(),
+  image: getLogoUrl(),
+  telephone: siteConfig.contact.telephone,
+  email: siteConfig.contact.email,
+  foundingDate: siteConfig.foundingDate,
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Opposite Nyamata Bus Park, APEBU School Road',
-    addressLocality: 'Nyamata',
-    addressRegion: 'Bugesera District',
-    addressCountry: 'RW',
+    streetAddress: siteConfig.location.streetAddress,
+    addressLocality: siteConfig.location.addressLocality,
+    addressRegion: siteConfig.location.addressRegion,
+    addressCountry: siteConfig.location.addressCountry,
     postalCode: '',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: -2.1445609,
-    longitude: 30.092361,
+    latitude: siteConfig.location.geoCoordinates.latitude,
+    longitude: siteConfig.location.geoCoordinates.longitude,
   },
   areaServed: [
     {
       '@type': 'Country',
-      name: 'Rwanda',
+      name: siteConfig.location.countryName,
     },
     {
       '@type': 'AdministrativeArea',
-      name: 'Bugesera District',
+      name: siteConfig.location.addressRegion,
     },
     {
       '@type': 'City',
-      name: 'Nyamata',
+      name: siteConfig.location.addressLocality,
     },
   ],
   serviceArea: {
     '@type': 'GeoCircle',
     geoMidpoint: {
       '@type': 'GeoCoordinates',
-      latitude: -2.1445609,
-      longitude: 30.092361,
+      latitude: siteConfig.location.geoCoordinates.latitude,
+      longitude: siteConfig.location.geoCoordinates.longitude,
     },
-    geoRadius: '50000',
+    geoRadius: siteConfig.location.serviceRadius,
   },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '17:00',
+      opens: siteConfig.openingHours.weekdays.opens,
+      closes: siteConfig.openingHours.weekdays.closes,
     },
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: 'Saturday',
-      opens: '09:00',
-      closes: '16:00',
+      opens: siteConfig.openingHours.saturday.opens,
+      closes: siteConfig.openingHours.saturday.closes,
     },
   ],
   sameAs: [],
@@ -89,24 +87,24 @@ const localBusinessJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Business Loans',
-          description: 'Commercial loans tailored for entrepreneurs and business owners',
+          name: financialProducts.businessLoans.name,
+          description: financialProducts.businessLoans.description,
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Savings Accounts',
-          description: 'Multiple savings products with attractive interest rates',
+          name: financialProducts.savingsAccounts.name,
+          description: financialProducts.savingsAccounts.description,
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Agriculture Loans',
-          description: 'Specialized financing for farmers and livestock producers',
+          name: financialProducts.agricultureLoans.name,
+          description: financialProducts.agricultureLoans.description,
         },
       },
       {
@@ -129,22 +127,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = `${baseUrl}/${loc}`
+    alternateLanguages[loc] = getFullUrl(`/${loc}`)
   })
 
   return {
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(siteConfig.url),
     title: {
       default: t('title'),
-      template: '%s | COOJAD-BUGESERA',
+      template: `%s | ${siteConfig.name}`,
     },
     description: t('description'),
     keywords: t('keywords'),
-    authors: [{ name: 'COOJAD-BUGESERA' }],
-    creator: 'COOJAD-BUGESERA',
-    publisher: 'COOJAD-BUGESERA',
+    authors: [{ name: siteConfig.name }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
     generator: 'Next.js',
-    applicationName: 'COOJAD-BUGESERA',
+    applicationName: siteConfig.name,
     referrer: 'origin-when-cross-origin',
     formatDetection: {
       email: true,
@@ -153,7 +151,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     // Canonical URL
     alternates: {
-      canonical: `${baseUrl}/${localeValue}`,
+      canonical: getFullUrl(`/${localeValue}`),
       languages: alternateLanguages,
     },
     // OpenGraph metadata
@@ -161,30 +159,30 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('ogDescription'),
       type: 'website',
-      url: `${baseUrl}/${localeValue}`,
-      siteName: 'COOJAD-BUGESERA',
-      locale: localeValue === 'fr' ? 'fr_RW' : localeValue === 'rw' ? 'rw_RW' : 'en_RW',
+      url: getFullUrl(`/${localeValue}`),
+      siteName: siteConfig.name,
+      locale: getOgLocale(localeValue),
       alternateLocale: routing.locales
         .filter(l => l !== localeValue)
-        .map(l => l === 'fr' ? 'fr_RW' : l === 'rw' ? 'rw_RW' : 'en_RW'),
+        .map(l => getOgLocale(l)),
       images: [
         {
-          url: `${baseUrl}/coojad-logo.jpeg`,
+          url: getLogoUrl(),
           width: 1200,
           height: 630,
-          alt: 'COOJAD-BUGESERA - Empowering Youth Entrepreneurs in Rwanda',
+          alt: `${siteConfig.name} - Empowering Youth Entrepreneurs in Rwanda`,
         },
       ],
-      countryName: 'Rwanda',
+      countryName: siteConfig.location.countryName,
     },
     // Twitter Card metadata
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('ogDescription'),
-      images: [`${baseUrl}/coojad-logo.jpeg`],
-      creator: '@coojad',
-      site: '@coojad',
+      images: [getLogoUrl()],
+      creator: siteConfig.social.twitter,
+      site: siteConfig.social.twitter,
     },
     // Robots directives
     robots: {
@@ -221,10 +219,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     category: 'finance',
     // GEO targeting meta tags
     other: {
-      'geo.region': 'RW-05', // Rwanda - Southern Province (Bugesera)
-      'geo.placename': 'Nyamata, Bugesera District, Rwanda',
-      'geo.position': '-2.1445609;30.092361',
-      'ICBM': '-2.1445609, 30.092361',
+      'geo.region': siteConfig.location.geoRegion,
+      'geo.placename': `${siteConfig.location.addressLocality}, ${siteConfig.location.addressRegion}, ${siteConfig.location.countryName}`,
+      'geo.position': `${siteConfig.location.geoCoordinates.latitude};${siteConfig.location.geoCoordinates.longitude}`,
+      'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
       'content-language': localeValue,
     },
   }
