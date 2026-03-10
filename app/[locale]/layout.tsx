@@ -1,10 +1,11 @@
-import type { Viewport } from 'next'
+import type { Viewport, Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
+import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 import '../globals.css'
 
 type Locale = (typeof routing.locales)[number]
@@ -12,22 +13,192 @@ type Locale = (typeof routing.locales)[number]
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+// Structured data for LocalBusiness (GEO targeting) using shared config
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  '@id': `${siteConfig.url}/#organization`,
+  name: siteConfig.name,
+  alternateName: siteConfig.alternateName,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  logo: getLogoUrl(),
+  image: getLogoUrl(),
+  telephone: siteConfig.contact.telephone,
+  email: siteConfig.contact.email,
+  foundingDate: siteConfig.foundingDate,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.location.streetAddress,
+    addressLocality: siteConfig.location.addressLocality,
+    addressRegion: siteConfig.location.addressRegion,
+    addressCountry: siteConfig.location.addressCountry,
+    postalCode: '',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.location.geoCoordinates.latitude,
+    longitude: siteConfig.location.geoCoordinates.longitude,
+  },
+  areaServed: [
+    {
+      '@type': 'Country',
+      name: siteConfig.location.countryName,
+    },
+    {
+      '@type': 'AdministrativeArea',
+      name: siteConfig.location.addressRegion,
+    },
+    {
+      '@type': 'City',
+      name: siteConfig.location.addressLocality,
+    },
+  ],
+  serviceArea: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: siteConfig.location.geoCoordinates.latitude,
+      longitude: siteConfig.location.geoCoordinates.longitude,
+    },
+    geoRadius: siteConfig.location.serviceRadius,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: siteConfig.openingHours.weekdays.opens,
+      closes: siteConfig.openingHours.weekdays.closes,
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: siteConfig.openingHours.saturday.opens,
+      closes: siteConfig.openingHours.saturday.closes,
+    },
+  ],
+  sameAs: [],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Financial Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: financialProducts.businessLoans.name,
+          description: financialProducts.businessLoans.description,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: financialProducts.savingsAccounts.name,
+          description: financialProducts.savingsAccounts.description,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: financialProducts.agricultureLoans.name,
+          description: financialProducts.agricultureLoans.description,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Business Training',
+          description: 'Entrepreneurship training and financial education programs',
+        },
+      },
+    ],
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const localeValue = locale as Locale
   const t = await getTranslations({ locale: localeValue, namespace: 'metadata' })
 
+  // Generate alternate language links
+  const alternateLanguages: Record<string, string> = {}
+  routing.locales.forEach((loc) => {
+    alternateLanguages[loc] = getFullUrl(`/${loc}`)
+  })
+
   return {
-    title: t('title'),
+    metadataBase: new URL(siteConfig.url),
+    title: {
+      default: t('title'),
+      template: `%s | ${siteConfig.name}`,
+    },
     description: t('description'),
     keywords: t('keywords'),
-    generator: 'v0.app',
+    authors: [{ name: siteConfig.name }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
+    generator: 'Next.js',
+    applicationName: siteConfig.name,
+    referrer: 'origin-when-cross-origin',
+    formatDetection: {
+      email: true,
+      address: true,
+      telephone: true,
+    },
+    // Canonical URL
+    alternates: {
+      canonical: getFullUrl(`/${localeValue}`),
+      languages: alternateLanguages,
+    },
+    // OpenGraph metadata
     openGraph: {
-      title: 'COOJAD-BUGESERA',
+      title: t('title'),
       description: t('ogDescription'),
       type: 'website',
-      locale: localeValue === 'fr' ? 'fr_RW' : localeValue === 'rw' ? 'rw_RW' : 'en_RW',
+      url: getFullUrl(`/${localeValue}`),
+      siteName: siteConfig.name,
+      locale: getOgLocale(localeValue),
+      alternateLocale: routing.locales
+        .filter(l => l !== localeValue)
+        .map(l => getOgLocale(l)),
+      images: [
+        {
+          url: getLogoUrl(),
+          width: 1200,
+          height: 630,
+          alt: `${siteConfig.name} - Empowering Youth Entrepreneurs in Rwanda`,
+        },
+      ],
+      countryName: siteConfig.location.countryName,
     },
+    // Twitter Card metadata
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('ogDescription'),
+      images: [getLogoUrl()],
+      creator: siteConfig.social.twitter,
+      site: siteConfig.social.twitter,
+    },
+    // Robots directives
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    // Icons
     icons: {
       icon: [
         { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -39,6 +210,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
     },
     manifest: '/site.webmanifest',
+    // Verification tags (placeholders - can be updated with actual values)
+    verification: {
+      google: '',
+      yandex: '',
+    },
+    // Category for the website
+    category: 'finance',
+    // GEO targeting meta tags
+    other: {
+      'geo.region': siteConfig.location.geoRegion,
+      'geo.placename': `${siteConfig.location.addressLocality}, ${siteConfig.location.addressRegion}, ${siteConfig.location.countryName}`,
+      'geo.position': `${siteConfig.location.geoCoordinates.latitude};${siteConfig.location.geoCoordinates.longitude}`,
+      'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
+      'content-language': localeValue,
+    },
   }
 }
 
@@ -70,6 +256,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        {/* JSON-LD Structured Data for SEO and GEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
+        />
+      </head>
       <body className="font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}

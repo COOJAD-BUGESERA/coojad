@@ -1,0 +1,10 @@
+# Robots.txt for COOJAD-BUGESERA
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://coojad.rw/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
