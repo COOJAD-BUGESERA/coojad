@@ -1,16 +1,14 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 
 type Locale = (typeof routing.locales)[number]
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const localeValue = locale as Locale
   const t = await getTranslations({ locale: localeValue, namespace: 'services' })
-  const tMeta = await getTranslations({ locale: localeValue, namespace: 'metadata' })
 
   const title = `${t('hero.titleLine1')} ${t('hero.titleLine2')}`
   const description = t('hero.subtitle')
@@ -18,61 +16,61 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = `${baseUrl}/${loc}/services`
+    alternateLanguages[loc] = getFullUrl(`/${loc}/services`)
   })
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${baseUrl}/${localeValue}/services`,
+      canonical: getFullUrl(`/${localeValue}/services`),
       languages: alternateLanguages,
     },
     openGraph: {
-      title: `${title} | COOJAD-BUGESERA`,
+      title: `${title} | ${siteConfig.name}`,
       description,
       type: 'website',
-      url: `${baseUrl}/${localeValue}/services`,
-      siteName: 'COOJAD-BUGESERA',
-      locale: localeValue === 'fr' ? 'fr_RW' : localeValue === 'rw' ? 'rw_RW' : 'en_RW',
+      url: getFullUrl(`/${localeValue}/services`),
+      siteName: siteConfig.name,
+      locale: getOgLocale(localeValue),
       images: [
         {
-          url: `${baseUrl}/coojad-logo.jpeg`,
+          url: getLogoUrl(),
           width: 1200,
           height: 630,
-          alt: 'COOJAD-BUGESERA Financial Services',
+          alt: `${siteConfig.name} Financial Services`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | COOJAD-BUGESERA`,
+      title: `${title} | ${siteConfig.name}`,
       description,
-      images: [`${baseUrl}/coojad-logo.jpeg`],
+      images: [getLogoUrl()],
     },
     other: {
-      'geo.region': 'RW-05',
-      'geo.placename': 'Nyamata, Bugesera District, Rwanda',
-      'geo.position': '-2.1445609;30.092361',
-      'ICBM': '-2.1445609, 30.092361',
+      'geo.region': siteConfig.location.geoRegion,
+      'geo.placename': `${siteConfig.location.addressLocality}, ${siteConfig.location.addressRegion}, ${siteConfig.location.countryName}`,
+      'geo.position': `${siteConfig.location.geoCoordinates.latitude};${siteConfig.location.geoCoordinates.longitude}`,
+      'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
     },
   }
 }
 
-// Structured data for services page
+// Structured data for services page using shared config
 const servicesJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
-  name: 'COOJAD-BUGESERA Financial Services',
+  name: `${siteConfig.name} Financial Services`,
   description: 'Comprehensive financial services for entrepreneurs including business loans, savings accounts, agriculture loans, and business training.',
   provider: {
     '@type': 'Organization',
-    name: 'COOJAD-BUGESERA',
-    url: baseUrl,
+    name: siteConfig.name,
+    url: siteConfig.url,
   },
   areaServed: {
     '@type': 'Country',
-    name: 'Rwanda',
+    name: siteConfig.location.countryName,
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -82,13 +80,13 @@ const servicesJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'LoanOrCredit',
-          name: 'Business Loans',
-          description: 'Commercial loans from 50,000 RWF to 20,000,000 RWF at 19% annual interest rate',
+          name: financialProducts.businessLoans.name,
+          description: `${financialProducts.businessLoans.description} from ${financialProducts.businessLoans.minAmount.toLocaleString()} ${financialProducts.businessLoans.currency} to ${financialProducts.businessLoans.maxAmount.toLocaleString()} ${financialProducts.businessLoans.currency} at ${financialProducts.businessLoans.interestRate}% annual interest rate`,
           amount: {
             '@type': 'MonetaryAmount',
-            minValue: 50000,
-            maxValue: 20000000,
-            currency: 'RWF',
+            minValue: financialProducts.businessLoans.minAmount,
+            maxValue: financialProducts.businessLoans.maxAmount,
+            currency: financialProducts.businessLoans.currency,
           },
         },
       },
@@ -96,13 +94,13 @@ const servicesJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'LoanOrCredit',
-          name: 'Agriculture & Livestock Loans',
-          description: 'Specialized financing for farmers at 16% annual interest rate',
+          name: financialProducts.agricultureLoans.name,
+          description: `${financialProducts.agricultureLoans.description} at ${financialProducts.agricultureLoans.interestRate}% annual interest rate`,
           amount: {
             '@type': 'MonetaryAmount',
-            minValue: 50000,
-            maxValue: 20000000,
-            currency: 'RWF',
+            minValue: financialProducts.agricultureLoans.minAmount,
+            maxValue: financialProducts.agricultureLoans.maxAmount,
+            currency: financialProducts.agricultureLoans.currency,
           },
         },
       },
@@ -110,8 +108,8 @@ const servicesJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'BankAccount',
-          name: 'Savings Accounts',
-          description: 'Multiple savings products with 8-12% annual interest rates',
+          name: financialProducts.savingsAccounts.name,
+          description: `${financialProducts.savingsAccounts.description} with ${financialProducts.savingsAccounts.interestRateMin}-${financialProducts.savingsAccounts.interestRateMax}% annual interest rates`,
         },
       },
     ],
