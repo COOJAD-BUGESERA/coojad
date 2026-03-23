@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       siteConfig.locales.forEach((altLocale) => {
         alternateLanguages[altLocale] = getFullUrl(`/${altLocale}${page}`)
       })
-      alternateLanguages['x-default'] = siteConfig.url
+      alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}${page}`)
       
       sitemapEntries.push({
         url,
