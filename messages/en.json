@@ -1,9 +1,17 @@
 {
   "metadata": {
-    "title": "COOJAD-BUGESERA | Empowering Youth Entrepreneurs in Rwanda",
-    "description": "A dynamic cooperative bank dedicated to empowering youth entrepreneurs with financial services, business training, and community support in Kigali, Rwanda.",
-    "keywords": "cooperative bank, business loans, Rwanda, entrepreneurs, financial services, Kigali",
-    "ogDescription": "Empowering the next generation of entrepreneurs in Rwanda"
+    "title": "COOJAD-BUGESERA | Cooperative Bank in Rwanda for Youth Entrepreneurs",
+    "description": "COOJAD-BUGESERA is a trusted cooperative bank in Rwanda offering business loans, savings accounts, and entrepreneurship training for youth and small businesses in Bugesera.",
+    "keywords": "cooperative bank Rwanda, business loans Bugesera, savings accounts Nyamata, youth entrepreneurship support, microfinance services",
+    "ogDescription": "Trusted cooperative bank in Rwanda for business loans, savings, and youth entrepreneurship support.",
+    "homeFaq": {
+      "q1": "What services does COOJAD-BUGESERA offer?",
+      "a1": "COOJAD-BUGESERA offers business loans, agriculture and livestock loans, savings accounts, and entrepreneurship training services for youth and small businesses in Rwanda.",
+      "q2": "Who can apply for a business loan at COOJAD-BUGESERA?",
+      "a2": "Young entrepreneurs and business owners in Rwanda can apply for business loans when they meet eligibility requirements such as valid identification, business activity or a business plan, and required collateral.",
+      "q3": "Where is COOJAD-BUGESERA located?",
+      "a3": "COOJAD-BUGESERA is located in Nyamata, Bugesera District, Rwanda, opposite Nyamata Bus Park on APEBU School Road."
+    }
   },
   "common": {
     "nav": {
@@ -43,9 +51,9 @@
   "home": {
     "hero": {
       "badge": "Financial Excellence",
-      "titleLine1": "Empowering",
-      "titleLine2": "Entrepreneurs",
-      "subtitle": "Rwanda's premier cooperative bank dedicated to accessible financial services and business support for youth entrepreneurs.",
+      "titleLine1": "Cooperative Banking",
+      "titleLine2": "for Entrepreneurs",
+      "subtitle": "Access business loans, savings accounts, and practical training from COOJAD-BUGESERA, a leading cooperative bank supporting youth entrepreneurs in Bugesera, Rwanda.",
       "exploreServices": "Explore Services",
       "learnMore": "Learn More",
       "stat1Value": "9,000+",
@@ -136,7 +144,7 @@
       "titleLine1": "Ready to Grow",
       "titleLine2": "Your Business?",
       "subtitle": "Join hundreds of entrepreneurs transforming their dreams into reality with COOJAD-BUGESERA.",
-      "joinNow": "Join Now",
+      "joinNow": "Apply for Services",
       "learnMore": "Learn More",
       "features": "No hidden fees · No long waiting periods · Transparent banking"
     }

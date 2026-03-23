@@ -1,9 +1,17 @@
 {
   "metadata": {
-    "title": "COOJAD-BUGESERA | Autonomiser les Jeunes Entrepreneurs au Rwanda",
-    "description": "Une banque coopérative dynamique dédiée à l'autonomisation des jeunes entrepreneurs avec des services financiers, une formation commerciale et un soutien communautaire à Kigali, Rwanda.",
-    "keywords": "banque coopérative, prêts commerciaux, Rwanda, entrepreneurs, services financiers, Kigali",
-    "ogDescription": "Autonomiser la prochaine génération d'entrepreneurs au Rwanda"
+    "title": "COOJAD-BUGESERA | Banque Coopérative au Rwanda pour Jeunes Entrepreneurs",
+    "description": "COOJAD-BUGESERA est une banque coopérative de confiance au Rwanda offrant des prêts professionnels, des comptes d’épargne et des formations entrepreneuriales aux jeunes et PME de Bugesera.",
+    "keywords": "banque coopérative Rwanda, prêts professionnels Bugesera, comptes d’épargne Nyamata, accompagnement entrepreneurial des jeunes, services de microfinance",
+    "ogDescription": "Banque coopérative de confiance au Rwanda pour prêts, épargne et accompagnement entrepreneurial des jeunes.",
+    "homeFaq": {
+      "q1": "Quels services COOJAD-BUGESERA propose-t-il ?",
+      "a1": "COOJAD-BUGESERA propose des prêts professionnels, des prêts agricoles et d’élevage, des comptes d’épargne et des formations entrepreneuriales pour les jeunes et les petites entreprises au Rwanda.",
+      "q2": "Qui peut demander un prêt professionnel chez COOJAD-BUGESERA ?",
+      "a2": "Les jeunes entrepreneurs et propriétaires d’entreprise au Rwanda peuvent demander un prêt professionnel s’ils remplissent les critères d’éligibilité, notamment une pièce d’identité valide, une activité ou un plan d’affaires et les garanties requises.",
+      "q3": "Où se trouve COOJAD-BUGESERA ?",
+      "a3": "COOJAD-BUGESERA est situé à Nyamata, district de Bugesera, au Rwanda, en face de la gare routière de Nyamata sur la route de l’école APEBU."
+    }
   },
   "common": {
     "nav": {
@@ -43,9 +51,9 @@
   "home": {
     "hero": {
       "badge": "Excellence Financière",
-      "titleLine1": "Autonomiser les",
-      "titleLine2": "Entrepreneurs",
-      "subtitle": "La principale banque coopérative du Rwanda dédiée aux services financiers accessibles et au soutien commercial pour les jeunes entrepreneurs.",
+      "titleLine1": "Banque Coopérative",
+      "titleLine2": "pour Entrepreneurs",
+      "subtitle": "Accédez à des prêts professionnels, des comptes d’épargne et des formations pratiques avec COOJAD-BUGESERA, une banque coopérative de référence pour les jeunes entrepreneurs à Bugesera, Rwanda.",
       "exploreServices": "Découvrir les Services",
       "learnMore": "En Savoir Plus",
       "stat1Value": "9 000+",
@@ -136,7 +144,7 @@
       "titleLine1": "Prêt à Développer",
       "titleLine2": "Votre Entreprise?",
       "subtitle": "Rejoignez des centaines d'entrepreneurs transformant leurs rêves en réalité avec COOJAD-BUGESERA.",
-      "joinNow": "Rejoignez-nous",
+      "joinNow": "Demander un Service",
       "learnMore": "En Savoir Plus",
       "features": "Pas de frais cachés · Pas de longues périodes d'attente · Banque transparente"
     }
