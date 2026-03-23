@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "COOJAD-BUGESERA | Empowering Youth Entrepreneurs in Rwanda",
-    "description": "A dynamic cooperative bank dedicated to empowering youth entrepreneurs with financial services, business training, and community support in Kigali, Rwanda.",
-    "keywords": "cooperative bank, business loans, Rwanda, entrepreneurs, financial services, Kigali",
-    "ogDescription": "Empowering the next generation of entrepreneurs in Rwanda"
+    "title": "COOJAD-BUGESERA | Cooperative Bank in Rwanda for Youth Entrepreneurs",
+    "description": "COOJAD-BUGESERA is a trusted cooperative bank in Rwanda offering business loans, savings accounts, and entrepreneurship training for youth and small businesses in Bugesera.",
+    "keywords": "cooperative bank Rwanda, business loans Rwanda, savings accounts Rwanda, youth entrepreneurship Rwanda, microfinance Bugesera",
+    "ogDescription": "Trusted cooperative bank in Rwanda for business loans, savings, and youth entrepreneurship support."
   },
   "common": {
     "nav": {
@@ -43,9 +43,9 @@
   "home": {
     "hero": {
       "badge": "Financial Excellence",
-      "titleLine1": "Empowering",
-      "titleLine2": "Entrepreneurs",
-      "subtitle": "Rwanda's premier cooperative bank dedicated to accessible financial services and business support for youth entrepreneurs.",
+      "titleLine1": "Cooperative Banking",
+      "titleLine2": "for Entrepreneurs",
+      "subtitle": "Access business loans, savings accounts, and practical training from COOJAD-BUGESERA, a leading cooperative bank supporting youth entrepreneurs in Bugesera, Rwanda.",
       "exploreServices": "Explore Services",
       "learnMore": "Learn More",
       "stat1Value": "9,000+",
@@ -136,7 +136,7 @@
       "titleLine1": "Ready to Grow",
       "titleLine2": "Your Business?",
       "subtitle": "Join hundreds of entrepreneurs transforming their dreams into reality with COOJAD-BUGESERA.",
-      "joinNow": "Join Now",
+      "joinNow": "Apply for Services",
       "learnMore": "Learn More",
       "features": "No hidden fees · No long waiting periods · Transparent banking"
     }
