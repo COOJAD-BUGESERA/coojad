@@ -8,6 +8,19 @@ import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } fr
 import '../globals.css'
 
 type Locale = (typeof routing.locales)[number]
+type HomeFaqMessages = {
+  metadata?: {
+    homeFaq?: Record<string, string>
+  }
+}
+const defaultHomeFaq = {
+  q1: 'What services does COOJAD-BUGESERA offer?',
+  a1: 'COOJAD-BUGESERA offers business loans, agriculture and livestock loans, savings accounts, and entrepreneurship training services for youth and small businesses in Rwanda.',
+  q2: 'Who can apply for a business loan at COOJAD-BUGESERA?',
+  a2: 'Young entrepreneurs and business owners in Rwanda can apply for business loans when they meet eligibility requirements such as valid identification, business activity or a business plan, and required collateral.',
+  q3: 'Where is COOJAD-BUGESERA located?',
+  a3: 'COOJAD-BUGESERA is located in Nyamata, Bugesera District, Rwanda, opposite Nyamata Bus Park on APEBU School Road.',
+}
 
 // Structured data for LocalBusiness (GEO targeting) using shared config
 const localBusinessJsonLd = {
@@ -126,37 +139,6 @@ const websiteJsonLd = {
   publisher: {
     '@id': `${siteConfig.url}/#organization`,
   },
-}
-
-const homeFaqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What services does COOJAD-BUGESERA offer?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'COOJAD-BUGESERA offers business loans, agriculture and livestock loans, savings accounts, and entrepreneurship training services for youth and small businesses in Rwanda.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Who can apply for a business loan at COOJAD-BUGESERA?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Young entrepreneurs and business owners in Rwanda can apply for business loans when they meet eligibility requirements such as valid identification, business activity or a business plan, and required collateral.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Where is COOJAD-BUGESERA located?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'COOJAD-BUGESERA is located in Nyamata, Bugesera District, Rwanda, opposite Nyamata Bus Park on APEBU School Road.',
-      },
-    },
-  ],
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -293,6 +275,43 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages({ locale: locale as Locale })
+  const homeFaqMessages = (messages as HomeFaqMessages).metadata?.homeFaq ?? {}
+  const faqQ1 = homeFaqMessages.q1 ?? defaultHomeFaq.q1
+  const faqA1 = homeFaqMessages.a1 ?? defaultHomeFaq.a1
+  const faqQ2 = homeFaqMessages.q2 ?? defaultHomeFaq.q2
+  const faqA2 = homeFaqMessages.a2 ?? defaultHomeFaq.a2
+  const faqQ3 = homeFaqMessages.q3 ?? defaultHomeFaq.q3
+  const faqA3 = homeFaqMessages.a3 ?? defaultHomeFaq.a3
+  const homeFaqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: faqQ1,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faqA1,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: faqQ2,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faqA2,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: faqQ3,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faqA3,
+        },
+      },
+    ],
+  }
 
   return (
     <html lang={locale}>
