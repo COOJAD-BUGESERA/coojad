@@ -4,7 +4,19 @@ import { siteConfig, getFullUrl } from '@/lib/seo-config'
 const pages = ['', '/about', '/services', '/contact']
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const sitemapEntries: MetadataRoute.Sitemap = []
+  const sitemapEntries: MetadataRoute.Sitemap = [
+    {
+      url: siteConfig.url,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+      alternates: {
+        languages: {
+          'x-default': siteConfig.url,
+        },
+      },
+    },
+  ]
 
   // Generate entries for each page in each locale
   pages.forEach((page) => {
@@ -16,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       siteConfig.locales.forEach((altLocale) => {
         alternateLanguages[altLocale] = getFullUrl(`/${altLocale}${page}`)
       })
+      alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}${page}`)
       
       sitemapEntries.push({
         url,
