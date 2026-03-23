@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "COOJAD-BUGESERA | Gutera Inkunga Abakiri Bato Bacuruza mu Rwanda",
-    "description": "Koperative ya banki yihariye gutera inkunga abakiri bato bacuruza hakoreshejwe serivisi za banki, amahugurwa mu bucuruzi, n'ubufatanye mu muryango mu Kigali, Rwanda.",
-    "keywords": "koperative ya banki, inguzanyo z'ubucuruzi, Rwanda, abacuruzi, serivisi za banki, Kigali",
-    "ogDescription": "Gutera inkunga igisata cy'abacuruzi mu Rwanda"
+    "title": "COOJAD-BUGESERA | Koperative ya Banki mu Rwanda ku Bacuruzi Bato",
+    "description": "COOJAD-BUGESERA ni koperative ya banki yizewe mu Rwanda itanga inguzanyo z’ubucuruzi, konti zo kwizigamira, n’amahugurwa ku bucuruzi ku rubyiruko n’imishinga mito muri Bugesera.",
+    "keywords": "koperative ya banki Rwanda, inguzanyo z’ubucuruzi Rwanda, konti zo kwizigamira Rwanda, ubucuruzi bw’urubyiruko Rwanda, microfinance Bugesera",
+    "ogDescription": "Koperative ya banki yizewe mu Rwanda ku nguzanyo, kwizigamira no guteza imbere urubyiruko rwihangira imirimo."
   },
   "common": {
     "nav": {
@@ -43,9 +43,9 @@
   "home": {
     "hero": {
       "badge": "Ubuhanga bwo mu Mafaranga",
-      "titleLine1": "Gutera Inkunga",
-      "titleLine2": "Abacuruzi",
-      "subtitle": "Koperative ya banki ikomeye mu Rwanda yihariye ku guha serivisi za banki zigerwaho n'ubufatanye mu bucuruzi ku bakiri bato bacuruza.",
+      "titleLine1": "Banki ya Koperative",
+      "titleLine2": "y’Abacuruzi",
+      "subtitle": "Shaka inguzanyo z’ubucuruzi, konti zo kwizigamira n’amahugurwa afatika muri COOJAD-BUGESERA, koperative ya banki ifasha urubyiruko rwihangira imirimo i Bugesera mu Rwanda.",
       "exploreServices": "Reba Serivisi",
       "learnMore": "Menya Byinshi",
       "stat1Value": "9,000+",
@@ -136,7 +136,7 @@
       "titleLine1": "Witeguye Kukuza",
       "titleLine2": "Ubucuruzi Bwawe?",
       "subtitle": "Injira mu bantu magana bacuruza bahinduye inzozi zabo mu bizikorwa na COOJAD-BUGESERA.",
-      "joinNow": "Injira Ubu",
+      "joinNow": "Saba Serivisi",
       "learnMore": "Menya Byinshi",
       "features": "Nta mafaranga ahishe · Nta gihe kirekire cyo gutegereza · Banki ifite ubunyangamugayo"
     }

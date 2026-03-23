@@ -1,5 +1,4 @@
 import type { Viewport, Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
@@ -9,9 +8,6 @@ import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } fr
 import '../globals.css'
 
 type Locale = (typeof routing.locales)[number]
-
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 // Structured data for LocalBusiness (GEO targeting) using shared config
 const localBusinessJsonLd = {
@@ -117,6 +113,50 @@ const localBusinessJsonLd = {
       },
     ],
   },
+}
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteConfig.url}/#website`,
+  url: siteConfig.url,
+  name: siteConfig.name,
+  description: siteConfig.description,
+  inLanguage: ['en', 'fr', 'rw'],
+  publisher: {
+    '@id': `${siteConfig.url}/#organization`,
+  },
+}
+
+const homeFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What services does COOJAD-BUGESERA offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'COOJAD-BUGESERA offers business loans, agriculture and livestock loans, savings accounts, and entrepreneurship training services for youth and small businesses in Rwanda.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who can apply for a business loan at COOJAD-BUGESERA?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Young entrepreneurs and business owners in Rwanda can apply for business loans when they meet eligibility requirements such as valid identification, business activity or a business plan, and required collateral.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is COOJAD-BUGESERA located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'COOJAD-BUGESERA is located in Nyamata, Bugesera District, Rwanda, opposite Nyamata Bus Park on APEBU School Road.',
+      },
+    },
+  ],
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -262,6 +302,18 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(homeFaqJsonLd),
           }}
         />
       </head>
