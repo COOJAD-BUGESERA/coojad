@@ -18,10 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   routing.locales.forEach((loc) => {
     alternateLanguages[loc] = getFullUrl(`/${loc}/about`)
   })
+  alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}/about`)
 
   return {
     title,
     description,
+    keywords: 'COOJAD-BUGESERA about, cooperative bank Rwanda history, microfinance Rwanda, youth cooperative Bugesera, COOJAD cooperative history, cooperative bank since 2008',
     alternates: {
       canonical: getFullUrl(`/${localeValue}/about`),
       languages: alternateLanguages,
@@ -55,6 +57,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
     },
   }
+}
+
+// BreadcrumbList for About page
+const aboutBreadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'About',
+      item: `${siteConfig.url}/en/about`,
+    },
+  ],
 }
 
 // Structured data for about page - Organization schema using shared config
@@ -113,6 +135,12 @@ export default function AboutLayout({
 }) {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(aboutBreadcrumbJsonLd),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

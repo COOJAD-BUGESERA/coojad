@@ -18,10 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   routing.locales.forEach((loc) => {
     alternateLanguages[loc] = getFullUrl(`/${loc}/services`)
   })
+  alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}/services`)
 
   return {
     title,
     description,
+    keywords: 'business loans Rwanda, agriculture loans Bugesera, savings accounts Rwanda, cooperative bank services, microfinance services Nyamata, youth entrepreneur loans, COOJAD services',
     alternates: {
       canonical: getFullUrl(`/${localeValue}/services`),
       languages: alternateLanguages,
@@ -55,6 +57,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
     },
   }
+}
+
+// BreadcrumbList for Services page
+const servicesBreadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: `${siteConfig.url}/en/services`,
+    },
+  ],
 }
 
 // Structured data for services page using shared config
@@ -123,6 +145,12 @@ export default function ServicesLayout({
 }) {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(servicesBreadcrumbJsonLd),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

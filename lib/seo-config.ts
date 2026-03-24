@@ -43,9 +43,12 @@ export const siteConfig = {
     sunday: null, // Closed
   },
   
-  // Social media (placeholders)
+  // Social media
   social: {
     twitter: '@coojad',
+    twitterUrl: 'https://twitter.com/coojad',
+    facebookUrl: 'https://www.facebook.com/coojad',
+    linkedinUrl: 'https://www.linkedin.com/company/coojad',
   },
   
   // Supported locales

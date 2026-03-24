@@ -87,7 +87,11 @@ const localBusinessJsonLd = {
       closes: siteConfig.openingHours.saturday.closes,
     },
   ],
-  sameAs: [],
+  sameAs: [
+    siteConfig.social.twitterUrl,
+    siteConfig.social.facebookUrl,
+    siteConfig.social.linkedinUrl,
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Financial Services',
@@ -138,6 +142,14 @@ const websiteJsonLd = {
   inLanguage: ['en', 'fr', 'rw'],
   publisher: {
     '@id': `${siteConfig.url}/#organization`,
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteConfig.url}/en/services?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
   },
 }
 
@@ -234,8 +246,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     manifest: '/site.webmanifest',
     // Verification tags (placeholders - can be updated with actual values)
     verification: {
-      google: '',
-      yandex: '',
+      google: 'EQJKS7L90B04-JgeSkFolNmq-LlwpAAQgAtgalheHf4',
     },
     // Category for the website
     category: 'finance',
