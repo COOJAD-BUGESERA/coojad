@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
+import { siteConfig, financialProducts, getCanonicalUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 
 type Locale = (typeof routing.locales)[number]
 
@@ -16,23 +16,23 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = getFullUrl(`/${loc}/contact`)
+    alternateLanguages[loc] = getCanonicalUrl(loc, '/contact')
   })
-  alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}/contact`)
+  alternateLanguages['x-default'] = getCanonicalUrl(siteConfig.defaultLocale, '/contact')
 
   return {
     title,
     description,
     keywords: 'contact COOJAD-BUGESERA, cooperative bank Nyamata contact, loan application Rwanda, COOJAD phone number, COOJAD email, visit COOJAD Bugesera',
     alternates: {
-      canonical: getFullUrl(`/${localeValue}/contact`),
+      canonical: getCanonicalUrl(localeValue, '/contact'),
       languages: alternateLanguages,
     },
     openGraph: {
       title: `${title} | ${siteConfig.name}`,
       description,
       type: 'website',
-      url: getFullUrl(`/${localeValue}/contact`),
+      url: getCanonicalUrl(localeValue, '/contact'),
       siteName: siteConfig.name,
       locale: getOgLocale(localeValue),
       images: [
@@ -74,7 +74,7 @@ const contactBreadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 2,
       name: 'Contact',
-      item: `${siteConfig.url}/en/contact`,
+      item: getCanonicalUrl(siteConfig.defaultLocale, '/contact'),
     },
   ],
 }
@@ -88,7 +88,7 @@ const contactJsonLd = {
     '@id': `${siteConfig.url}/#contact`,
     name: siteConfig.name,
     description: `Contact ${siteConfig.name} cooperative bank for business loans, savings accounts, and financial services in ${siteConfig.location.addressLocality}, ${siteConfig.location.countryName}.`,
-    url: getFullUrl('/contact'),
+    url: getCanonicalUrl(siteConfig.defaultLocale, '/contact'),
     telephone: siteConfig.contact.telephone,
     email: siteConfig.contact.email,
     address: {

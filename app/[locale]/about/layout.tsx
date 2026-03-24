@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { siteConfig, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
+import { siteConfig, getCanonicalUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 
 type Locale = (typeof routing.locales)[number]
 
@@ -16,23 +16,23 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = getFullUrl(`/${loc}/about`)
+    alternateLanguages[loc] = getCanonicalUrl(loc, '/about')
   })
-  alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}/about`)
+  alternateLanguages['x-default'] = getCanonicalUrl(siteConfig.defaultLocale, '/about')
 
   return {
     title,
     description,
     keywords: 'COOJAD-BUGESERA about, cooperative bank Rwanda history, microfinance Rwanda, youth cooperative Bugesera, COOJAD cooperative history, cooperative bank since 2008',
     alternates: {
-      canonical: getFullUrl(`/${localeValue}/about`),
+      canonical: getCanonicalUrl(localeValue, '/about'),
       languages: alternateLanguages,
     },
     openGraph: {
       title: `${title} | ${siteConfig.name}`,
       description,
       type: 'website',
-      url: getFullUrl(`/${localeValue}/about`),
+      url: getCanonicalUrl(localeValue, '/about'),
       siteName: siteConfig.name,
       locale: getOgLocale(localeValue),
       images: [
@@ -74,7 +74,7 @@ const aboutBreadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 2,
       name: 'About',
-      item: `${siteConfig.url}/en/about`,
+      item: getCanonicalUrl(siteConfig.defaultLocale, '/about'),
     },
   ],
 }

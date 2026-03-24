@@ -94,6 +94,14 @@ export function getFullUrl(path: string = ''): string {
   return `${siteConfig.url}${path}`
 }
 
+// Returns the canonical URL for a locale + page, using root paths for the default locale.
+// e.g. getCanonicalUrl('en', '/about') → 'https://coojad.rw/about'
+//      getCanonicalUrl('fr', '/about') → 'https://coojad.rw/fr/about'
+export function getCanonicalUrl(locale: string, page: string = ''): string {
+  const prefix = locale === siteConfig.defaultLocale ? '' : `/${locale}`
+  return `${siteConfig.url}${prefix}${page}`
+}
+
 // Helper to get logo URL
 export function getLogoUrl(): string {
   return getFullUrl(siteConfig.logo)
