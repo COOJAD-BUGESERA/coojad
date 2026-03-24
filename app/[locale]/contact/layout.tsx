@@ -18,10 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   routing.locales.forEach((loc) => {
     alternateLanguages[loc] = getFullUrl(`/${loc}/contact`)
   })
+  alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}/contact`)
 
   return {
     title,
     description,
+    keywords: 'contact COOJAD-BUGESERA, cooperative bank Nyamata contact, loan application Rwanda, COOJAD phone number, COOJAD email, visit COOJAD Bugesera',
     alternates: {
       canonical: getFullUrl(`/${localeValue}/contact`),
       languages: alternateLanguages,
@@ -55,6 +57,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'ICBM': `${siteConfig.location.geoCoordinates.latitude}, ${siteConfig.location.geoCoordinates.longitude}`,
     },
   }
+}
+
+// BreadcrumbList for Contact page
+const contactBreadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Contact',
+      item: `${siteConfig.url}/en/contact`,
+    },
+  ],
 }
 
 // Structured data for contact page with enhanced GEO information using shared config
@@ -170,6 +192,12 @@ export default function ContactLayout({
 }) {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactBreadcrumbJsonLd),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

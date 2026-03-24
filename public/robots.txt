@@ -4,8 +4,15 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# Sitemap
-Sitemap: https://coojad.rw/sitemap.xml
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
 
-# Crawl-delay for politeness
-Crawl-delay: 1
+# Bingbot specific rules
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# Sitemap locations (submit these URLs in Google Search Console & Bing Webmaster Tools)
+Sitemap: https://coojad.rw/sitemap.xml
