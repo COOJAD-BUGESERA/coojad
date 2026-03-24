@@ -1,44 +1,32 @@
 import { MetadataRoute } from 'next'
-import { siteConfig, getFullUrl } from '@/lib/seo-config'
+import { siteConfig, getCanonicalUrl } from '@/lib/seo-config'
 
 const pages = ['', '/about', '/services', '/contact']
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const sitemapEntries: MetadataRoute.Sitemap = [
-    {
-      url: siteConfig.url,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-      alternates: {
-        languages: {
-          'x-default': siteConfig.url,
-        },
-      },
-    },
-  ]
+  const sitemapEntries: MetadataRoute.Sitemap = []
 
-  // Generate entries for each page in each locale
+  // Generate one entry per page (not per locale), using canonical URLs
+  // English uses root paths (e.g. /about), others use prefixed paths (e.g. /fr/about)
   pages.forEach((page) => {
+    const alternateLanguages: Record<string, string> = {}
+
     siteConfig.locales.forEach((locale) => {
-      const url = getFullUrl(`/${locale}${page}`)
-      const alternateLanguages: Record<string, string> = {}
-      
-      // Add hreflang alternates for each locale
-      siteConfig.locales.forEach((altLocale) => {
-        alternateLanguages[altLocale] = getFullUrl(`/${altLocale}${page}`)
-      })
-      alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}${page}`)
-      
-      sitemapEntries.push({
-        url,
-        lastModified: new Date(),
-        changeFrequency: page === '' ? 'weekly' : 'monthly',
-        priority: page === '' ? 1.0 : page === '/services' ? 0.9 : 0.8,
-        alternates: {
-          languages: alternateLanguages,
-        },
-      })
+      alternateLanguages[locale] = getCanonicalUrl(locale, page)
+    })
+    alternateLanguages['x-default'] = getCanonicalUrl(siteConfig.defaultLocale, page)
+
+    // Canonical URL = English (root) path
+    const canonicalUrl = getCanonicalUrl(siteConfig.defaultLocale, page)
+
+    sitemapEntries.push({
+      url: canonicalUrl,
+      lastModified: new Date(),
+      changeFrequency: page === '' ? 'weekly' : 'monthly',
+      priority: page === '' ? 1.0 : page === '/services' ? 0.9 : 0.8,
+      alternates: {
+        languages: alternateLanguages,
+      },
     })
   })
 

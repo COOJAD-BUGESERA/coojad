@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
+import { siteConfig, financialProducts, getCanonicalUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 
 type Locale = (typeof routing.locales)[number]
 
@@ -16,23 +16,23 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = getFullUrl(`/${loc}/services`)
+    alternateLanguages[loc] = getCanonicalUrl(loc, '/services')
   })
-  alternateLanguages['x-default'] = getFullUrl(`/${siteConfig.defaultLocale}/services`)
+  alternateLanguages['x-default'] = getCanonicalUrl(siteConfig.defaultLocale, '/services')
 
   return {
     title,
     description,
     keywords: 'business loans Rwanda, agriculture loans Bugesera, savings accounts Rwanda, cooperative bank services, microfinance services Nyamata, youth entrepreneur loans, COOJAD services',
     alternates: {
-      canonical: getFullUrl(`/${localeValue}/services`),
+      canonical: getCanonicalUrl(localeValue, '/services'),
       languages: alternateLanguages,
     },
     openGraph: {
       title: `${title} | ${siteConfig.name}`,
       description,
       type: 'website',
-      url: getFullUrl(`/${localeValue}/services`),
+      url: getCanonicalUrl(localeValue, '/services'),
       siteName: siteConfig.name,
       locale: getOgLocale(localeValue),
       images: [
@@ -74,7 +74,7 @@ const servicesBreadcrumbJsonLd = {
       '@type': 'ListItem',
       position: 2,
       name: 'Services',
-      item: `${siteConfig.url}/en/services`,
+      item: getCanonicalUrl(siteConfig.defaultLocale, '/services'),
     },
   ],
 }

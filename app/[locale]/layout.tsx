@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { siteConfig, financialProducts, getFullUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
+import { siteConfig, financialProducts, getFullUrl, getCanonicalUrl, getLogoUrl, getOgLocale } from '@/lib/seo-config'
 import '../globals.css'
 
 type Locale = (typeof routing.locales)[number]
@@ -147,7 +147,7 @@ const websiteJsonLd = {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: `${siteConfig.url}/en/services?q={search_term_string}`,
+      urlTemplate: `${siteConfig.url}/services?q={search_term_string}`,
     },
     'query-input': 'required name=search_term_string',
   },
@@ -158,11 +158,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const localeValue = locale as Locale
   const t = await getTranslations({ locale: localeValue, namespace: 'metadata' })
 
-  // Generate alternate language links
+  // Generate alternate language links (English at root, others prefixed)
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
-    alternateLanguages[loc] = getFullUrl(`/${loc}`)
+    alternateLanguages[loc] = getCanonicalUrl(loc)
   })
+  alternateLanguages['x-default'] = siteConfig.url
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -183,9 +184,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       address: true,
       telephone: true,
     },
-    // Canonical URL
+    // Canonical URL — English pages use root path (no /en/ prefix)
     alternates: {
-      canonical: getFullUrl(`/${localeValue}`),
+      canonical: getCanonicalUrl(localeValue),
       languages: alternateLanguages,
     },
     // OpenGraph metadata
@@ -193,7 +194,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('ogDescription'),
       type: 'website',
-      url: getFullUrl(`/${localeValue}`),
+      url: getCanonicalUrl(localeValue),
       siteName: siteConfig.name,
       locale: getOgLocale(localeValue),
       alternateLocale: routing.locales
