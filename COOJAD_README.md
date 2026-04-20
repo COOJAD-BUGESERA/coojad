@@ -5,6 +5,7 @@ An award-winning, modern business website for COOJAD-BUGESERA cooperative bank, 
 ## Project Overview
 
 COOJAD-BUGESERA is a dynamic cooperative bank dedicated to:
+
 - Empowering the next generation of entrepreneurs
 - Providing innovative financial services
 - Promoting self-development and community growth
@@ -13,12 +14,14 @@ COOJAD-BUGESERA is a dynamic cooperative bank dedicated to:
 ## Website Features
 
 ### Pages
+
 - **Homepage** - Hero section with mission, services overview, testimonials, and newsletter signup
 - **About** - Organization history, mission statement, core values, impact metrics, and timeline
 - **Services** - Detailed information on business loans, savings programs, investment services, and training
 - **Contact** - Contact form, location map, office hours, FAQ, and quick links
 
 ### Components
+
 - **Header** - Sticky navigation with mobile menu
 - **Hero** - Full-screen hero with gradient backgrounds and stats
 - **Service Cards** - Expandable service information with animations
@@ -31,6 +34,7 @@ COOJAD-BUGESERA is a dynamic cooperative bank dedicated to:
 ## Design System
 
 ### Color Palette
+
 - **Primary Green**: Deep forest green (#1a5c3a) - Trust and stability
 - **Accent Orange**: Warm business tone for highlights
 - **Neutral**: Cream backgrounds and grays for readability
@@ -38,11 +42,13 @@ COOJAD-BUGESERA is a dynamic cooperative bank dedicated to:
 - **Dark Mode**: Fully supported with optimized contrast
 
 ### Typography
+
 - **Headings**: Bold, modern sans-serif (Geist)
 - **Body**: Clean, readable sans-serif (Geist)
 - **Monospace**: Technical content (Geist Mono)
 
 ### Animations
+
 - Smooth page transitions and hover effects
 - Staggered fade-in animations on section loads
 - Scale and slide transitions for interactive elements
@@ -55,6 +61,7 @@ COOJAD-BUGESERA is a dynamic cooperative bank dedicated to:
 - **UI Components**: shadcn/ui
 - **Icons**: Lucide React
 - **Form Handling**: React Hook Form
+- **Email Service**: EmailJS (contact form delivery)
 - **Analytics**: Vercel Analytics
 - **Mobile**: Fully responsive design
 
@@ -95,6 +102,7 @@ COOJAD-BUGESERA is a dynamic cooperative bank dedicated to:
 ## Getting Started
 
 ### Installation
+
 ```bash
 npm install
 # or
@@ -102,15 +110,29 @@ pnpm install
 ```
 
 ### Development
+
 ```bash
 npm run dev
 # or
 pnpm dev
 ```
 
+### Environment Variables
+
+Create a `.env.local` file in the project root and add:
+
+```bash
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+These values are required for the contact form to send emails via EmailJS.
+
 Open [http://localhost:3000](http://localhost:3000) to view the website.
 
 ### Build
+
 ```bash
 npm run build
 npm start
@@ -119,23 +141,29 @@ npm start
 ## Customization
 
 ### Update Business Information
+
 Edit contact details in:
+
 - `/components/footer.tsx` - Contact info and social links
 - `/components/header.tsx` - Navigation links
 - `/app/contact/page.tsx` - Contact information and FAQs
 - `/app/about/page.tsx` - Company information and timeline
 
 ### Modify Colors
+
 Update color tokens in `/app/globals.css`:
+
 - `:root` section for light mode
 - `.dark` section for dark mode
 
 ### Add New Pages
+
 1. Create new folder in `/app`
 2. Add `page.tsx` with content
 3. Update navigation in `/components/header.tsx`
 
 ### Update Services
+
 Edit service information in `/components/service-cards.tsx` and `/app/services/page.tsx`
 
 ## Browser Support
@@ -155,6 +183,7 @@ Edit service information in `/components/service-cards.tsx` and `/app/services/p
 ## Contact & Support
 
 For questions about this website:
+
 - Email: info@coojad.rw
 - Phone: +250 123 456 789
 - Location: Near Nyamata Bus Park, Kigali, Rwanda

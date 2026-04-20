@@ -1,37 +1,76 @@
 'use client'
 
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { useTranslations } from 'next-intl'
+
+const initialFormData = {
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: ''
+}
 
 export default function ContactForm() {
   const t = useTranslations('contact.form')
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  })
+  const [formData, setFormData] = useState(initialFormData)
+  const [isSending, setIsSending] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const [submitted, setSubmitted] = useState(false)
+  const handleReset = () => {
+    setFormData(initialFormData)
+    setSubmitStatus('idle')
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to a server
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-    setTimeout(() => setSubmitted(false), 3000)
+    setSubmitStatus('idle')
+    setIsSending(true)
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+    try {
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS environment variables are missing.')
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          time: new Date().toLocaleString()
+        },
+        {
+          publicKey
+        }
+      )
+
+      setSubmitStatus('success')
+      setFormData(initialFormData)
+    } catch (error) {
+      console.error('EmailJS submission failed:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} onReset={handleReset} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -123,21 +162,29 @@ export default function ContactForm() {
       <div className="flex flex-col sm:flex-row gap-4">
         <button
           type="submit"
-          className="flex-1 px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
+          disabled={isSending}
+          className="flex-1 px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {t('send')}
+          {isSending ? t('sending') : t('send')}
         </button>
         <button
           type="reset"
-          className="flex-1 px-8 py-3 rounded-lg border-2 border-border text-foreground hover:bg-muted/50 transition-colors font-semibold"
+          disabled={isSending}
+          className="flex-1 px-8 py-3 rounded-lg border-2 border-border text-foreground hover:bg-muted/50 transition-colors font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {t('clear')}
         </button>
       </div>
 
-      {submitted && (
+      {submitStatus === 'success' && (
         <div className="p-4 rounded-lg bg-accent/20 border border-accent/40 text-accent">
           {t('success')}
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive">
+          {t('error')}
         </div>
       )}
     </form>
