@@ -5,6 +5,7 @@ import Footer from '@/components/footer'
 import { Users, Award, Target, Lightbulb, ArrowRight, MapPin, Calendar, Shield } from 'lucide-react'
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 export default function About() {
   const t = useTranslations('about')
@@ -178,24 +179,26 @@ export default function About() {
             </div>
 
             <div className="relative" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s backwards' }}>
-              <div className="relative h-125 rounded-3xl overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/90 to-primary/70" />
-                <div className="absolute inset-0 opacity-[0.04]" style={{
-                  backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-                  backgroundSize: '24px 24px'
-                }} />
-
-                {/* Decorative content inside the card */}
-                <div className="relative h-full flex flex-col items-center justify-center p-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-8 border border-white/10">
-                    <Shield className="w-10 h-10 text-accent" />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/community-meeting.jpg"
+                  alt="COOJAD community meeting with cooperative members"
+                  width={600}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+                {/* Overlay with licensed badge */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                      <Shield className="w-6 h-6 text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold">{t('story.licensedTitle')}</h3>
+                      <p className="text-sm text-white/70">{t('story.licensedBy')}</p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{t('story.licensedTitle')}</h3>
-                  <p className="text-white/60 leading-relaxed max-w-xs">
-                    {t('story.licensedDesc')}
-                  </p>
-                  <div className="elegant-divider mt-8 mb-6 mx-auto" />
-                  <p className="text-sm text-white/40">{t('story.licensedBy')}</p>
                 </div>
               </div>
 
