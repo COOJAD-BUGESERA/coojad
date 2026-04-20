@@ -95,10 +95,11 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-6 border-t border-border/50">
-                <div className="w-11 h-11 rounded-full bg-linear-to-br from-primary to-primary/70 flex items-center justify-center text-white font-semibold text-sm shrink-0">
-                  <Quote size={14} className="text-white/90" />
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-semibold text-sm shrink-0">
+                  {testimonial.initial}
                 </div>
                 <div>
+                  <p className="font-semibold text-primary text-sm">{testimonial.name}</p>
                   <p className="text-xs text-foreground/45 mt-0.5">
                     {testimonial.role} · {testimonial.company}
                   </p>
