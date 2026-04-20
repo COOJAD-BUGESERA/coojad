@@ -86,34 +86,49 @@ export default function Hero() {
           {/* Hero Image */}
           <div className="relative hidden lg:block animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="relative">
+              {/* Decorative background elements */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-accent/20 via-primary/10 to-accent/5 rounded-[2.5rem] blur-2xl -z-10" />
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-accent/30 rounded-full blur-3xl" />
+              <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
+              
               {/* Main image container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
                 <Image
                   src="/images/hero-african-business.jpg"
                   alt="African entrepreneurs and cooperative members"
-                  width={600}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  width={700}
+                  height={600}
+                  className="w-full h-[520px] object-cover"
                   priority
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-primary/10" />
               </div>
               
-              {/* Floating accent cards */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-elegant p-4 border border-border/60 animate-float">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-                    <Users className="w-5 h-5 text-accent" />
+              {/* Floating accent card - larger and more prominent */}
+              <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-2xl p-5 border border-border/40 animate-float">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center shadow-lg shadow-accent/25">
+                    <Users className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <p className="text-lg font-bold text-primary">{t('stat1Value')}</p>
-                    <p className="text-xs text-foreground/50">{t('stat1Label')}</p>
+                    <p className="text-2xl font-bold text-primary">{t('stat1Value')}</p>
+                    <p className="text-sm text-foreground/60 font-medium">{t('stat1Label')}</p>
                   </div>
                 </div>
               </div>
-              
-              
+
+              {/* Additional floating element - top right */}
+              <div className="absolute -top-4 -right-4 bg-primary rounded-2xl shadow-xl p-4 animate-float" style={{ animationDelay: '0.5s' }}>
+                <div className="flex items-center gap-2 text-white">
+                  <TrendingUp className="w-5 h-5 text-accent" />
+                  <div>
+                    <p className="text-lg font-bold">{t('stat2Value')}</p>
+                    <p className="text-xs text-white/70">{t('stat2Label')}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
