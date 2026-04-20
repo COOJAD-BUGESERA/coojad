@@ -2,7 +2,6 @@
 
 import { Star, Quote } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
 
 interface Testimonial {
   name: string
@@ -11,7 +10,6 @@ interface Testimonial {
   quote: string
   rating: number
   initial: string
-  image: string
 }
 
 export default function Testimonials() {
@@ -24,8 +22,7 @@ export default function Testimonials() {
       company: t('t1Company'),
       quote: t('t1Quote'),
       rating: 5,
-      initial: t('t1Initial'),
-      image: '/images/testimonial-1.jpg'
+      initial: t('t1Initial')
     },
     {
       name: t('t2Name'),
@@ -33,8 +30,7 @@ export default function Testimonials() {
       company: t('t2Company'),
       quote: t('t2Quote'),
       rating: 5,
-      initial: t('t2Initial'),
-      image: '/images/testimonial-2.jpg'
+      initial: t('t2Initial')
     },
     {
       name: t('t3Name'),
@@ -42,8 +38,7 @@ export default function Testimonials() {
       company: t('t3Company'),
       quote: t('t3Quote'),
       rating: 5,
-      initial: t('t3Initial'),
-      image: '/images/testimonial-3.jpg'
+      initial: t('t3Initial')
     },
     {
       name: t('t4Name'),
@@ -51,8 +46,7 @@ export default function Testimonials() {
       company: t('t4Company'),
       quote: t('t4Quote'),
       rating: 5,
-      initial: t('t4Initial'),
-      image: '/images/testimonial-4.jpg'
+      initial: t('t4Initial')
     },
   ]
 
@@ -101,14 +95,8 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-6 border-t border-border/50">
-                <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-accent/20">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={48}
-                    height={48}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-semibold text-sm shrink-0">
+                  {testimonial.initial}
                 </div>
                 <div>
                   <p className="font-semibold text-primary text-sm">{testimonial.name}</p>
