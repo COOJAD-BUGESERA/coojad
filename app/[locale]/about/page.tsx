@@ -181,7 +181,7 @@ export default function About() {
             <div className="relative" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s backwards' }}>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/community-meeting.jpg"
+                  src="/00003fd8-3c19-4ebb-a12a-63c0107295cd.JPG"
                   alt="COOJAD community meeting with cooperative members"
                   width={600}
                   height={500}
@@ -206,6 +206,32 @@ export default function About() {
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/20 rounded-3xl -z-10 blur-sm" />
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-3xl -z-10 blur-sm" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { src: '/00003fd8-3c19-4ebb-a12a-63c0107295cd.JPG', alt: 'COOJAD community gathering' },
+              { src: '/d6b08b44-152f-442a-87fb-a33bf1ea02b2.JPG', alt: 'COOJAD members in action' },
+              { src: '/fad52ca6-c566-4330-85c8-d127a67f5a26.JPG', alt: 'COOJAD cooperative activities' },
+            ].map((img, idx) => (
+              <div
+                key={idx}
+                className="relative rounded-2xl overflow-hidden shadow-md aspect-4/3 group"
+                style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards` }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
