@@ -13,7 +13,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const title = `${t('hero.titleLine1')} ${t('hero.titleLine2')}`
   const description = t('hero.subtitle')
 
-  // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
     alternateLanguages[loc] = getCanonicalUrl(loc, '/contact')
@@ -59,7 +58,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-// BreadcrumbList for Contact page
 const contactBreadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -79,7 +77,6 @@ const contactBreadcrumbJsonLd = {
   ],
 }
 
-// Structured data for contact page with enhanced GEO information using shared config
 const contactJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
@@ -137,7 +134,6 @@ const contactJsonLd = {
   },
 }
 
-// FAQ structured data using shared config for accurate rates
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',

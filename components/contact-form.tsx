@@ -23,7 +23,6 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to a server
     console.log('Form submitted:', formData)
     setSubmitted(true)
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' })

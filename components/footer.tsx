@@ -12,9 +12,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#041e1d] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 py-16 lg:py-20">
-          {/* Brand Column */}
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-5">
               <Image
@@ -49,7 +47,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
@@ -71,7 +68,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">{t('footer.servicesTitle')}</h3>
             <ul className="space-y-3">
@@ -93,7 +89,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-5">{t('footer.contactTitle')}</h3>
             <ul className="space-y-4">
@@ -123,7 +118,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-white/[0.06] py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/30 text-sm">

@@ -43,7 +43,6 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <Image
@@ -60,7 +59,6 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             {links.map((link) => {
               const isActive = pathname === link.href;
@@ -101,7 +99,6 @@ export default function Header() {
             })}
           </div>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <Link
               href="/contact"
@@ -111,7 +108,6 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 rounded-full text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200"
             onClick={() => setIsOpen(!isOpen)}
@@ -120,7 +116,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
             }`}

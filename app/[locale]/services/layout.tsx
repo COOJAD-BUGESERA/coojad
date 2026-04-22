@@ -13,7 +13,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const title = `${t('hero.titleLine1')} ${t('hero.titleLine2')}`
   const description = t('hero.subtitle')
 
-  // Generate alternate language links
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
     alternateLanguages[loc] = getCanonicalUrl(loc, '/services')
@@ -59,7 +58,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-// BreadcrumbList for Services page
 const servicesBreadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -79,7 +77,6 @@ const servicesBreadcrumbJsonLd = {
   ],
 }
 
-// Structured data for services page using shared config
 const servicesJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',

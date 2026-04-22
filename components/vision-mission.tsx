@@ -8,12 +8,10 @@ export default function VisionMission() {
 
   return (
     <section className="relative py-28 bg-primary overflow-hidden">
-      {/* Subtle decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 mb-6">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
@@ -22,7 +20,6 @@ export default function VisionMission() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Vision */}
           <div className="relative">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
@@ -42,7 +39,6 @@ export default function VisionMission() {
             </div>
           </div>
 
-          {/* Mission */}
           <div className="relative">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">

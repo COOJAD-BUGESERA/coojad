@@ -71,9 +71,7 @@ export default function About() {
     <main className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
       <section className="relative pt-36 pb-28 overflow-hidden">
-        {/* Background layers */}
         <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/95 to-primary/85" />
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
@@ -124,7 +122,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Bottom wave */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
             <path d="M0 60V30C240 10 480 0 720 10C960 20 1200 40 1440 30V60H0Z" fill="currentColor" className="text-background" />
@@ -132,7 +129,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Our Story */}
       <section className="py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -187,7 +183,6 @@ export default function About() {
                   height={500}
                   className="w-full h-auto object-cover"
                 />
-                {/* Overlay with licensed badge */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                   <div className="flex items-center gap-3 mb-3">
@@ -202,7 +197,6 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Floating accent element */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/20 rounded-3xl -z-10 blur-sm" />
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-3xl -z-10 blur-sm" />
             </div>
@@ -210,7 +204,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -236,7 +229,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
       <section className="py-24 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -275,7 +267,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Our Values */}
       <section className="py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -297,7 +288,6 @@ export default function About() {
                   className="group relative rounded-2xl bg-white border border-border p-8 hover:border-accent/40 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1.5"
                   style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards` }}
                 >
-                  {/* Gradient background on hover */}
                   <div className={`absolute inset-0 rounded-2xl bg-linear-to-br ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                   <div className="relative">
@@ -318,7 +308,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Timeline */}
       <section className="py-28 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -330,7 +319,6 @@ export default function About() {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Center line */}
               <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary/30 via-accent/30 to-transparent md:-translate-x-px" />
 
               {timeline.map((item, idx) => {
@@ -341,7 +329,6 @@ export default function About() {
                     className={`relative flex items-start gap-8 mb-12 last:mb-0 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                     style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.15}s backwards` }}
                   >
-                    {/* Content */}
                     <div className={`flex-1 ml-16 md:ml-0 ${isLeft ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
                       <div className={`bg-white rounded-2xl border border-border p-6 sm:p-8 hover:shadow-elegant transition-all duration-300 group`}>
                         <span className="inline-block text-sm font-bold text-accent mb-2">{item.year}</span>
@@ -354,12 +341,10 @@ export default function About() {
                       </div>
                     </div>
 
-                    {/* Center dot */}
                     <div className="absolute left-8 md:left-1/2 top-8 -translate-x-1/2 z-10">
                       <div className="w-4 h-4 rounded-full bg-primary border-4 border-background shadow-sm" />
                     </div>
 
-                    {/* Spacer for alternating layout */}
                     <div className="hidden md:block flex-1" />
                   </div>
                 )
@@ -369,7 +354,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Impact Stats */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/95 to-primary/85" />
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -403,7 +387,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Board Members */}
       <section className="py-28 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -416,7 +399,6 @@ export default function About() {
             </p>
           </div>
 
-          {/* President - featured */}
           <div className="max-w-sm mx-auto mb-10">
             {(() => {
               const president = { name: 'Dr Munyaburanga Edward', role: t('board.president'), initials: 'ME' }
@@ -444,7 +426,6 @@ export default function About() {
             })()}
           </div>
 
-          {/* Other board members */}
           <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { name: 'Twahirwa Sylvestre', role: t('board.vicePresident'), initials: 'TS' },
@@ -475,7 +456,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-8" style={{ animation: 'fadeInUp 0.6s ease-out' }}>

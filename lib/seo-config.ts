@@ -1,9 +1,3 @@
-/**
- * SEO Configuration for COOJAD-BUGESERA
- * Central source of truth for SEO-related constants and structured data
- */
-
-// Base URL for the site
 export const siteConfig = {
   name: 'COOJAD-BUGESERA',
   legalName: "Cooperative de la Jeunesse pour l'Auto-Emploi et Développement - BUGESERA",
@@ -13,15 +7,13 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw',
   logo: '/coojad-logo.jpeg',
   foundingDate: '2008-08-01',
-  
-  // Contact information
+
   contact: {
     telephone: '+250788403957',
     telephoneDisplay: '0788 403 957',
     email: 'info@coojad.rw',
   },
-  
-  // Location and GEO targeting
+
   location: {
     streetAddress: 'Opposite Nyamata Bus Park, APEBU School Road',
     addressLocality: 'Nyamata',
@@ -32,31 +24,27 @@ export const siteConfig = {
       latitude: -2.1445609,
       longitude: 30.092361,
     },
-    geoRegion: 'RW-05', // Rwanda - Southern Province (Bugesera)
-    serviceRadius: '50000', // 50km radius
+    geoRegion: 'RW-05',
+    serviceRadius: '50000',
   },
-  
-  // Opening hours
+
   openingHours: {
     weekdays: { opens: '08:00', closes: '17:00' },
     saturday: { opens: '09:00', closes: '16:00' },
-    sunday: null, // Closed
+    sunday: null,
   },
-  
-  // Social media
+
   social: {
     twitter: '@coojad',
     twitterUrl: 'https://twitter.com/coojad',
     facebookUrl: 'https://www.facebook.com/coojad',
     linkedinUrl: 'https://www.linkedin.com/company/coojad',
   },
-  
-  // Supported locales
+
   locales: ['en', 'fr', 'rw'] as const,
   defaultLocale: 'en' as const,
 }
 
-// Financial products configuration
 export const financialProducts = {
   businessLoans: {
     name: 'Business Loans',
@@ -64,7 +52,7 @@ export const financialProducts = {
     minAmount: 50000,
     maxAmount: 20000000,
     currency: 'RWF',
-    interestRate: 19, // Annual percentage
+    interestRate: 19,
   },
   agricultureLoans: {
     name: 'Agriculture & Livestock Loans',
@@ -72,42 +60,36 @@ export const financialProducts = {
     minAmount: 50000,
     maxAmount: 20000000,
     currency: 'RWF',
-    interestRate: 16, // Annual percentage (lower rate for agriculture)
+    interestRate: 16,
   },
   savingsAccounts: {
     name: 'Savings Accounts',
     description: 'Multiple savings products with attractive interest rates',
     interestRateMin: 8,
     interestRateMax: 12,
-    minOpeningBalance: 1000, // RWF
+    minOpeningBalance: 1000,
   },
   specialLoans: {
     name: 'Special Loan Products',
     description: 'Salary advances, school fees, vehicle, and mortgage loans',
-    interestRate: 19, // Annual percentage
-    overdraftRate: 5, // Monthly percentage
+    interestRate: 19,
+    overdraftRate: 5,
   },
 }
 
-// Helper function to get full URL
 export function getFullUrl(path: string = ''): string {
   return `${siteConfig.url}${path}`
 }
 
-// Returns the canonical URL for a locale + page, using root paths for the default locale.
-// e.g. getCanonicalUrl('en', '/about') → 'https://coojad.rw/about'
-//      getCanonicalUrl('fr', '/about') → 'https://coojad.rw/fr/about'
 export function getCanonicalUrl(locale: string, page: string = ''): string {
   const prefix = locale === siteConfig.defaultLocale ? '' : `/${locale}`
   return `${siteConfig.url}${prefix}${page}`
 }
 
-// Helper to get logo URL
 export function getLogoUrl(): string {
   return getFullUrl(siteConfig.logo)
 }
 
-// Get locale-specific OpenGraph locale code
 export function getOgLocale(locale: string): string {
   switch (locale) {
     case 'fr':

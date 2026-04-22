@@ -22,7 +22,6 @@ const defaultHomeFaq = {
   a3: 'COOJAD-BUGESERA is located in Nyamata, Bugesera District, Rwanda, opposite Nyamata Bus Park on APEBU School Road.',
 }
 
-// Structured data for LocalBusiness (GEO targeting) using shared config
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
@@ -158,7 +157,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const localeValue = locale as Locale
   const t = await getTranslations({ locale: localeValue, namespace: 'metadata' })
 
-  // Generate alternate language links (English at root, others prefixed)
   const alternateLanguages: Record<string, string> = {}
   routing.locales.forEach((loc) => {
     alternateLanguages[loc] = getCanonicalUrl(loc)
@@ -184,12 +182,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       address: true,
       telephone: true,
     },
-    // Canonical URL — English pages use root path (no /en/ prefix)
     alternates: {
       canonical: getCanonicalUrl(localeValue),
       languages: alternateLanguages,
     },
-    // OpenGraph metadata
     openGraph: {
       title: t('title'),
       description: t('ogDescription'),
@@ -210,7 +206,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ],
       countryName: siteConfig.location.countryName,
     },
-    // Twitter Card metadata
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
@@ -219,7 +214,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       creator: siteConfig.social.twitter,
       site: siteConfig.social.twitter,
     },
-    // Robots directives
     robots: {
       index: true,
       follow: true,
@@ -233,7 +227,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'max-snippet': -1,
       },
     },
-    // Icons
     icons: {
       icon: [
         { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -245,13 +238,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
     },
     manifest: '/site.webmanifest',
-    // Verification tags (placeholders - can be updated with actual values)
     verification: {
       google: 'EQJKS7L90B04-JgeSkFolNmq-LlwpAAQgAtgalheHf4',
     },
-    // Category for the website
     category: 'finance',
-    // GEO targeting meta tags
     other: {
       'geo.region': siteConfig.location.geoRegion,
       'geo.placename': `${siteConfig.location.addressLocality}, ${siteConfig.location.addressRegion}, ${siteConfig.location.countryName}`,
@@ -328,7 +318,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* JSON-LD Structured Data for SEO and GEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

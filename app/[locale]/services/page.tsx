@@ -52,7 +52,6 @@ export default function Services() {
     <main className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
       <section className="relative pt-36 pb-28 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/95 to-primary/85" />
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -96,7 +95,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Service Navigation Pills */}
       <section className="py-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -118,7 +116,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services List */}
       <section className="pb-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {services.map((service, idx) => {
@@ -137,7 +134,6 @@ export default function Services() {
                 )}
 
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start`}>
-                  {/* Content Side */}
                   <div
                     className={isReversed ? 'lg:order-2' : ''}
                     style={{ animation: 'fadeInUp 0.6s ease-out' }}
@@ -153,7 +149,6 @@ export default function Services() {
                       {service.description}
                     </p>
 
-                    {/* Features */}
                     <div className="mb-8">
                       <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
                         <div className="w-1 h-5 bg-accent rounded-full" />
@@ -181,9 +176,7 @@ export default function Services() {
                     </Link>
                   </div>
 
-                  {/* Info Boxes Side */}
                   <div className={`space-y-5 ${isReversed ? 'lg:order-1' : ''}`}>
-                    {/* Eligibility */}
                     <div className="rounded-2xl border border-border bg-white p-8 hover:shadow-elegant transition-all duration-300 group">
                       <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
                         <div className="w-1 h-5 bg-primary rounded-full" />
@@ -199,7 +192,6 @@ export default function Services() {
                       </ul>
                     </div>
 
-                    {/* Process */}
                     <div className="rounded-2xl border border-accent/20 bg-linear-to-br from-accent/5 to-transparent p-8 hover:shadow-elegant transition-all duration-300">
                       <h3 className="text-xl font-bold text-primary mb-5 flex items-center gap-2">
                         <div className="w-1 h-5 bg-accent rounded-full" />
@@ -224,7 +216,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/95 to-primary/85" />
         <div className="absolute inset-0 opacity-[0.03]" style={{

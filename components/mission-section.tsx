@@ -24,19 +24,17 @@ export default function MissionSection() {
   return (
     <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mission Statement */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Our Mission
           </h2>
           <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-            To empower the next generation of entrepreneurs by providing access to financial services, 
-            business knowledge, and community support, enabling them to build thriving businesses and 
+            To empower the next generation of entrepreneurs by providing access to financial services,
+            business knowledge, and community support, enabling them to build thriving businesses and
             contribute to Rwanda's economic growth.
           </p>
         </div>
 
-        {/* Three Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon

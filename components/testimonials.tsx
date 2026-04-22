@@ -74,10 +74,8 @@ export default function Testimonials() {
                 animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards`
               }}
             >
-              {/* Quote icon */}
               <Quote className="w-8 h-8 text-accent/20 mb-4" />
 
-              {/* Rating */}
               <div className="flex gap-0.5 mb-5">
                 {Array(testimonial.rating).fill(0).map((_, i) => (
                   <Star
@@ -88,12 +86,10 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              {/* Quote */}
               <p className="text-foreground/70 leading-relaxed mb-8">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
-              {/* Author */}
               <div className="flex items-center gap-4 pt-6 border-t border-border/50">
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-semibold text-sm shrink-0">
                   {testimonial.initial}

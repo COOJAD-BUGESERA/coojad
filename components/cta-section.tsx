@@ -10,7 +10,6 @@ export default function CTASection() {
 
   return (
     <section className="relative py-28 bg-primary overflow-hidden">
-      {/* Background image with overlay */}
       <div className="absolute inset-0">
         <Image
           src="/images/community-meeting.jpg"
@@ -20,10 +19,8 @@ export default function CTASection() {
         />
         <div className="absolute inset-0 bg-primary/80" />
       </div>
-      {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
-      {/* Dot pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{

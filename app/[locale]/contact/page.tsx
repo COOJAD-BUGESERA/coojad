@@ -30,7 +30,6 @@ export default function Contact() {
     <main className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
       <section className="relative pt-36 pb-28 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-primary via-primary/95 to-primary/85" />
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -74,7 +73,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Cards */}
       <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -103,11 +101,9 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Contact Form */}
             <div className="lg:col-span-3" style={{ animation: 'fadeInUp 0.6s ease-out' }}>
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-1 h-5 bg-accent rounded-full" />
@@ -121,9 +117,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Sidebar */}
             <div className="lg:col-span-2 space-y-6" style={{ animation: 'fadeInUp 0.6s ease-out 0.15s backwards' }}>
-              {/* Google Map */}
               <div className="rounded-2xl overflow-hidden border border-border">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d498.5!2d30.092361!3d-2.1445609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19c3579f2d465361%3A0xdd32bfe14a54c7da!2sCOOJAD-BUGESERA!5e0!3m2!1sen!2srw!4v1700000000000"
@@ -145,7 +139,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Office Hours */}
               <div className="rounded-2xl border border-border bg-white p-8 hover:shadow-elegant transition-all duration-300">
                 <h3 className="text-lg font-bold text-primary mb-5 flex items-center gap-2">
                   <div className="w-1 h-5 bg-primary rounded-full" />
@@ -167,7 +160,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Quick Links */}
               <div className="rounded-2xl border border-accent/20 bg-linear-to-br from-accent/5 to-transparent p-8">
                 <h3 className="text-lg font-bold text-primary mb-5 flex items-center gap-2">
                   <div className="w-1 h-5 bg-accent rounded-full" />
@@ -202,7 +194,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-28 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -239,7 +230,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
       <section className="py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-8" style={{ animation: 'fadeInUp 0.6s ease-out' }}>

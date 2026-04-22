@@ -76,7 +76,6 @@ export default function ServiceCards() {
                 animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards`
               }}
             >
-              {/* Service Image */}
               <div className="relative h-40 overflow-hidden">
                 <Image
                   src={service.image}
@@ -85,7 +84,6 @@ export default function ServiceCards() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-                {/* Icon overlay */}
                 <div className="absolute bottom-3 left-6 w-10 h-10 rounded-xl bg-white/90 shadow-lg text-primary flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-500">
                   {service.icon}
                 </div>
