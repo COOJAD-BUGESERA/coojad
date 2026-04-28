@@ -4,7 +4,7 @@ export const siteConfig = {
   alternateName: "Cooperative de la Jeunesse pour l'Auto-Emploi et Développement",
   shortName: 'COOJAD',
   description: 'A cooperative bank dedicated to empowering youth entrepreneurs with financial services, business training, and community support in Rwanda.',
-  url: process.env.NEXT_PUBLIC_BASE_URL || 'https://coojad.rw',
+  url: process.env.NEXT_PUBLIC_BASE_URL || 'https://www.coojad.rw',
   logo: '/coojad-logo.jpeg',
   foundingDate: '2008-08-01',
 
